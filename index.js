@@ -1,6 +1,13 @@
 
-// Check if there is a white space in the string
-const checkWhitespace = (str) => {
-  return /\s/.test(str);
+// Get the latitude and longitude coordinates from the Weather API
+const getCoordinate = (city, state, country) => {
+  
+  let cityName = city.split(' ').join('_') 
+
+  fetch()
+  .then(response => response.json())
+  .then(coordinate_data => {
+
+  })
 }
 
