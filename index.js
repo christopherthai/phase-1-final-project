@@ -97,13 +97,14 @@ const getWeatherCode = (latitude, longitude) => {
 
 
 
+// Moods Moods: Somber, Excited, Content, Calming , Hopeful , Nostalgic
 
 
 //  Ben and Dalton 
 //Body JS and U.I
 
 
-1. Connect Button to youtube URL on click
-2. Display City and Country on side 
-3.Add Like icon ---> on click add to liked Songs Playlist
-4. Randomly Recommend a song based on Mood
+// 1. Connect Button to youtube URL on click
+// 2. Display City and Country on side 
+// 3.Add Like icon ---> on click add to liked Songs Playlist
+// 4. Randomly Recommend a song based on Mood
