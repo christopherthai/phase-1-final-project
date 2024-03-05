@@ -150,6 +150,16 @@ const getSong = (mood) => {
 
 
 
+function main(){
+
+
+
+
+
+
+
+
+}
 
 
 
@@ -159,8 +169,11 @@ const getSong = (mood) => {
 
 
 
+const suggestedSong = document.getElementById("suggested-song")
 
-
+suggestedSong.addEventListener("click", ()=>{
+  console.log("Im clicked baby!")
+})
 
 
 
