@@ -11,6 +11,12 @@
 <body>
   <nav>
     <!--Chris and Dainis -->
+    <div class="navigation-bar"> 
+      <a class="logo">Logo</a>
+      <a class="display-location">Location</a>
+      <input type="text" name="search" id="search-location" placeholder="Change Your Location">
+      <input type="submit" id='submit-button' value="Submit" />
+    </div>
 
   </nav>
   <header>
@@ -23,13 +29,24 @@
 
   <div class="weather-display"> 
 
+
   </div>
 
   <section>
     <!-- Tune Of The Day Section -->
-    <h1></h1>
-    <div id="city-state"> </div>
-    <button class="song-button"></button>
+    <div id="top-body-container">
+      <h1>Here is a Popluar Tune to match todays Vibe!</h1>
+      <div id="city-state"></div>
+      <button id="suggested-song" class="song-button">
+        <!-- If there is an image display <img  src="" /> -->
+        <div id="stock-album-cover"></div>
+        <div id="song-text">
+          <h4>Song-Title</h4>
+          <h4>Artist Name</h4>
+        </div>
+        <!-- icon -->
+      </button>
+    </div>
   </section>
 
   <section>
