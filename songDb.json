@@ -1,0 +1,78 @@
+{
+  "songs": [
+    {
+      "id": "1",
+      "name": "The Man",
+      "artist": "Aloe Blacc",
+      "image": "https://i.ytimg.com/vi/n_58FqEiG3I/sddefault.jpg",
+      "url": {
+        "youtube":"https://www.youtube.com/watch?v=fm660vIn8Tg&ab_channel=AloeBlacc"
+          },
+      "mood": ["Happy"],
+      "lyrics":""
+    },
+
+    {
+      "id": "2",
+      "songTitle": "Happy",
+      "artist": "Pharrell Williams",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/2/23/Pharrell_Williams_-_Happy.jpg/220px-Pharrell_Williams_-_Happy.jpg",
+      "url": {
+        "youtube":"https://www.youtube.com/watch?v=y6Sxv-sUYtM&ab_channel=iamOTHER"
+          },
+      "mood": ["Happy"],
+      "lyrics":""
+    },
+
+    {
+      "id": "3",
+      "songTitle": "Someone Like You",
+      "artist": "Adele",
+      "image": "https://upload.wikimedia.org/wikipedia/en/7/7a/Adele_-_Someone_Like_You.png",
+      "url": {
+        "youtube":"https://www.youtube.com/watch?v=hLQl3WQQoQ0&ab_channel=AdeleVEVO"
+          },
+      "mood": ["Sad"],
+      "lyrics":""
+    },
+
+    {
+      "id": "4",
+      "songTitle": "Smokin Out The Window",
+      "artist": "Bruno Mars, Anderson .Paak, Silk Sonic",
+      "image": "https://upload.wikimedia.org/wikipedia/en/3/32/Silk_Sonic_-_Smokin_Out_The_Window.png",
+      "url": {
+        "youtube":"https://www.youtube.com/watch?v=GG7fLOmlhYg&ab_channel=BrunoMars"
+          },
+      "mood": ["Cozy"],
+      "lyrics":""
+    },
+
+    {
+      "id": "5",
+      "songTitle": "So What",
+      "artist": "P!nk",
+      "image": "",
+      "url": {
+        "youtube":"https://www.youtube.com/watch?v=FJfFZqTlWrQ&ab_channel=PinkVEVO"
+          },
+      "mood": ["Angry"],
+      "lyrics":""
+    },
+
+    {
+      "id": "6",
+      "songTitle": "See You Again",
+      "artist": "Wiz Khalifa",
+      "image": "https://i.scdn.co/image/ab67616d0000b2734e5df11b17b2727da2b718d8",
+      "url": {
+        "youtube":"https://www.youtube.com/watch?v=RgKAFK5djSk&ab_channel=WizKhalifaMusic"
+          },
+      "mood": ["Content"],
+      "lyrics":""
+    }
+
+  ]
+}
+
+
