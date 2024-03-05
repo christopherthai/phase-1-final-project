@@ -115,24 +115,24 @@ const getWeatherMood = (weather_code) => {
 
 const getSong = (mood) => {
   
-  fetch(``)
+  fetch(`http://localhost:3000/songs`)
   .then(response => {
-    
     // if response have a succcessful status code
     if(response.ok) {
-      return response.json() // gets returned to the next .then
-    } else {
+      return response.json()
+    }
+    else {
       alert("Something went wrong")
     }
     
   })
   .then(song_data => {
 
-      song_data.forEach(data => {
-        
-        // if () {
+       song_data.forEach(data => {
+        console.log(data.mood);
+       // if (){
 
-        // }
+      //  }
 
       })
   })
@@ -151,7 +151,7 @@ const getSong = (mood) => {
 
 
 function main(){
-
+getSong();
 
 
 
@@ -168,15 +168,14 @@ function main(){
 
 
 
-
 const suggestedSong = document.getElementById("suggested-song")
 
 suggestedSong.addEventListener("click", ()=>{
-  console.log("Im clicked baby!")
+  console.log("I'm clicked, baby!")
 })
 
 
-
+main();
 
 // Moods Moods: Somber, Excited, Content, Calming , Hopeful , Nostalgic
 
