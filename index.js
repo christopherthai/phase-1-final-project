@@ -152,7 +152,37 @@ const getSong = (mood) => {
 
 }
 
+<<<<<<< HEAD
 // addSubmitListener()
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Moods Moods: Somber, Excited, Content, Calming , Hopeful , Nostalgic
+
+
+>>>>>>> Development
 //  Ben and Dalton 
 //Body JS and U.I
 
