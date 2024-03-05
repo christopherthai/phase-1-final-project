@@ -79,8 +79,67 @@ const getWeatherCode = (latitude, longitude) => {
   .catch(error => alert(error)) 
 }
 
+const getWeatherMood = (weather_code) => {
+
+  let mood
+  
+  if ((weather_code >= 0) && (weather_code <= 3)) {
+
+    mood = "Excited"
+
+  } else if(((weather_code >= 4) && (weather_code <= 10)) || (((weather_code >= 17) && (weather_code <= 19))) || ((weather_code >= 41) && (weather_code <= 49))) {
+
+    mood = "Calming"
+
+  } else if(((weather_code >= 11) && (weather_code <= 16)) || (((weather_code >= 70) && (weather_code <= 77)))) {
+
+    mood = "Content"
+ 
+  } else if(((weather_code >= 20) && (weather_code <= 29)) || (((weather_code >= 60) && (weather_code <= 69))) || ((weather_code >= 78) && (weather_code <= 94))) {
+
+    mood = "Nostalgic"
+ 
+  } else if(((weather_code >= 30) && (weather_code <= 39)) || (((weather_code >= 95) && (weather_code <= 99)))) {
+
+    mood = "Somber"
+
+  } else if(((weather_code >= 50) && (weather_code <= 59))) {
+
+    mood = "Hopeful"
+  
+  }
+
+  getSong(mood)
+
+}
+
+const getSong = (mood) => {
+  
+  fetch(``)
+  .then(response => {
+    
+    // if response have a succcessful status code
+    if(response.ok) {
+      return response.json() // gets returned to the next .then
+    } else {
+      alert("Something went wrong")
+    }
+    
+  })
+  .then(song_data => {
+
+      song_data.forEach(data => {
+        
+        // if () {
+
+        // }
+
+      })
+  })
+  .catch(error => alert(error)) 
 
 
+}
 
 
 
@@ -113,7 +172,7 @@ const getWeatherCode = (latitude, longitude) => {
 //Body JS and U.I
 
 
-1. Connect Button to youtube URL on click
-2. Display City and Country on side 
-3.Add Like icon ---> on click add to liked Songs Playlist
-4. Randomly Recommend a song based on Mood
+// 1. Connect Button to youtube URL on click
+// 2. Display City and Country on side 
+// 3.Add Like icon ---> on click add to liked Songs Playlist
+// 4. Randomly Recommend a song based on Mood
