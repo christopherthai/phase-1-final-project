@@ -71,7 +71,7 @@ const getWeatherCode = (latitude, longitude) => {
   })
   .then(weather_data => {
 
-    console.log(weather_data.current.weather_code)
+    displayWeatherCondition(weather_data.current.weather_code)
     getWeatherMood(weather_data.current.weather_code)
 
     }
@@ -79,6 +79,15 @@ const getWeatherCode = (latitude, longitude) => {
   .catch(error => alert(error)) 
 }
 
+// Display weather condition on the webpage
+const displayWeatherCondition = (weather_code) => {
+
+
+}
+
+
+
+// Get mood base on weather
 const getWeatherMood = (weather_code) => {
 
   let mood
@@ -113,6 +122,8 @@ const getWeatherMood = (weather_code) => {
 
 }
 
+
+// Get song from the db.json file base on the mood
 const getSong = (mood) => {
   
   fetch(``)
@@ -152,4 +163,3 @@ addSubmitListener()
 // 2. Display City and Country on side 
 // 3.Add Like icon ---> on click add to liked Songs Playlist
 // 4. Randomly Recommend a song based on Mood
-// // Get mood base on the weather code
