@@ -1,7 +1,7 @@
 {
   "songs": [
     {
-      "name": "The Man",
+      "songTitle": "The Man",
       "artist": "Aloe Blacc",
       "image": "https://i.ytimg.com/vi/n_58FqEiG3I/sddefault.jpg",
       "url": {
@@ -66,7 +66,7 @@
       "lyrics":""
     },
     {
-      "name": "Blowin' in the Wind",
+      "songTitle": "Blowin' in the Wind",
       "artist": "Bob Dylan",
       "image":"",
       "url":{

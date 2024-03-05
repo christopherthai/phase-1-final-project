@@ -127,18 +127,34 @@ const getSong = (mood) => {
     
   })
   .then(song_data => {
-
-       song_data.forEach(data => {
-        console.log(data.mood);
-       // if (){
-
-      //  }
-
+    const moodList = [];
+      song_data.map(data => {
+        // console.log(data.mood[0]);
+        if(data.mood[0] === mood){
+          const songObj = {
+            songTitle: data.songTitle,
+            artistName: data.artist,
+            image: data.image,
+            url: data.url.youtube
+          };
+          moodList.push(song_data);
+          
+        }
       })
+
+      console.log(moodList, "moodList");
+     const songChoice = getRandom(moodList);
+     console.log(songChoice, "songChoice");
   })
   .catch(error => alert(error)) 
 
 
+}
+
+
+function getRandom(list){
+  const randomNumber = Math.floor(Math.random() * list.length);
+  return list[randomNumber];
 }
 
 
@@ -147,11 +163,8 @@ const getSong = (mood) => {
 
 
 
-
-
-
 function main(){
-getSong();
+getSong("Excited");
 
 
 
