@@ -1,5 +1,3 @@
-import { AnimatedWeatherIcon } from 'animated-weather-icon';
-
 // Get the inputs of the location from the user
 const addSubmitListener = () => {
 
@@ -83,8 +81,7 @@ const getWeatherCode = (latitude, longitude) => {
 // Display weather condition on the webpage
 const displayWeatherCondition = (weather_code) => {
   
-  const renderTarget = document.querySelector('.weather-display');
-  const icon = new AnimatedWeatherIcon(renderTarget);
+ 
 
 }
 
@@ -154,6 +151,11 @@ const getSong = (mood) => {
 
 
 }
+
+
+displayWeatherCondition()
+
+
 
 // Moods Moods: Somber, Excited, Content, Calming , Hopeful , Nostalgic
 
