@@ -2,7 +2,7 @@
 // Check if there is a whitespace in the string
 const checkWhiteSpace = (str) => {
   return /\s/.test(str)
-}
+} 
 
 // Get the latitude and longitude coordinates from the Weather API
 const getCoordinates = (city, state, country) => {
