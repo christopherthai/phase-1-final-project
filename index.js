@@ -1,21 +1,26 @@
 
-// Check if there is a whitespace in the string
-const checkWhiteSpace = (str) => {
-  return /\s/.test(str)
-} 
+// Get the inputs of the location from the user
+const addSubmitListener = () => {
+
+  const locationForm = document.querySelector('#location-input')
+
+  locationForm.addEventListener('submit', (event) => {
+    
+    event.preventDefault()
+
+    let locationInput = event.target.location.value
+    let parseLocationInput = locationInput.split(', ') // Seperate the string to have city, state, and country as seperate elements in an array
+
+    getCoordinates(parseLocationInput[0], parseLocationInput[1], parseLocationInput[2])
+
+  })
+
+}
 
 // Get the latitude and longitude coordinates from the Weather API
 const getCoordinates = (city, state, country) => {
   
-  // let state = "New York"
-  // let city = "New York"
-  // let country = "United States"
-  // let cityName = city.split(' ').join('+') 
-        
-  //Replace the white space with a '+' symbol in the city name
-  if(checkWhiteSpace(city)){
     let cityName = city.split(' ').join('+') 
-  }
 
   fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=10&language=en`)
   .then(response => {
@@ -49,6 +54,7 @@ const getCoordinates = (city, state, country) => {
   .catch(error => alert(error)) 
 }
 
+
 // Get weather code base on the latitude and longitude from the weather api
 const getWeatherCode = (latitude, longitude) => {
   
@@ -69,3 +75,5 @@ const getWeatherCode = (latitude, longitude) => {
   )
   .catch(error => alert(error)) 
 }
+
+addSubmitListener()
