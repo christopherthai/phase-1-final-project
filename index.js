@@ -86,7 +86,7 @@ const getWeatherMood = (weather_code) => {
     //Excited
   } else if(((weather_code >= 4) && (weather_code <= 10)) || (((weather_code >= 17) && (weather_code <= 19))) || ((weather_code >= 41) && (weather_code <= 49))) {
     //Calming
-  } else if(((weather_code >= 11) && (weather_code <= 16)) || (((weather_code >= 70) && (weather_code <= 77))))  {
+  } else if(((weather_code >= 11) && (weather_code <= 16)) || (((weather_code >= 70) && (weather_code <= 77)))) {
     //Content
   } else if(((weather_code >= 20) && (weather_code <= 29)) || (((weather_code >= 60) && (weather_code <= 69))) || ((weather_code >= 78) && (weather_code <= 94))) {
     //Nostalgic
@@ -96,6 +96,10 @@ const getWeatherMood = (weather_code) => {
     //Hopeful
   }
 
+}
+
+const getSong = () => {
+  
 }
 
 addSubmitListener()
