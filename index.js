@@ -153,7 +153,39 @@ const getSong = (mood) => {
 }
 
 
-displayWeatherCondition()
+
+
+
+
+
+
+
+
+function main(){
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+const suggestedSong = document.getElementById("suggested-song")
+
+suggestedSong.addEventListener("click", ()=>{
+  console.log("Im clicked baby!")
+})
+
 
 
 

@@ -1,0 +1,64 @@
+
+html{
+    padding:0;
+    margin:0;
+}
+header{
+    height: 50vh;
+    border:solid 2px yellow;
+    margin:0 0 5% 0 ;
+}
+section{
+    border:solid 2px black;
+    margin: 0 5% 0 0;
+}
+
+#top-body-container{
+    border:solid 2px red;
+
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   
+}
+#top-body-container h1{
+    margin: 2em 0;
+}
+
+
+/* Song Link Stuff*/
+#suggested-song{
+    display: flex;
+    align-items: center;
+
+    width: 50%;
+    height: 10vh;
+
+    border-radius: 12px;
+    border: none;
+    margin: 1em 0;
+}
+#suggested-song:hover{
+    transform: translate(2px,2px)
+}
+#stock-album-cover{
+    
+    background-color:orangered;
+    border-radius: 50%;
+    width: 10%;
+    height: 80%;
+    margin: 0 10% 0 5%;
+}
+
+
+
+
+#song-text{
+    margin:0;
+    font-size:1rem;
+}
+
+/* Playlist Stuff */
+playlist-container{
+
+}
