@@ -17,29 +17,29 @@
   <nav>
     <!--Chris and Dainis -->
     <div class="navigation-bar"> 
-      <img src="./local-weather-tune-app.png" id="logo">
-      <a class="display-location">Location</a>
-      
+      <img id="logo" src="./local-weather-tune-app.png"/>
+      <a class="display-location">Miami, Fl</a>
       <form id="change-location">
         <input type="text" name="search" id="search-location" placeholder="Change Your Location">
-        <input type="submit" id='submit-button' value="Submit" />
+        <input type="submit" id='nav-submit-button' value="Submit" />
       </form>
-
     </div>
 
   </nav>
   <header>
+
+    <div class="weather-display"> 
+      
+    </div>
     <form id="location-input">
-      <h4>Enter Your City, State, Country</h4>
-      <input type="text" name="location" id="location-name" />
-      <input type="submit" id='submit-button' value="Submit" />
+      <h4 id="start-screen-text">Enter Your City, State, Country</h4>
+      <div id="input-div">
+        <input type="text" name="location" id="location-name" placeholder="Miami, Florida, United States"/>
+        <input type="submit" id='submit-button' value="Submit"  />
+      </div>
     </form>
   </header>
 
-  <div class="weather-display"> 
-
-
-  </div>
 
   <section>
     <!-- Tune Of The Day Section -->

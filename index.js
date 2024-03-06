@@ -256,52 +256,52 @@ const getWeatherMood = (weather_code) => {
   
   }
 
-  getSong(mood)
+  // getSong(mood)
 
 }
 
-const getSong = (mood) => {
+// const getSong = (mood) => {
   
-  fetch("http://localhost:3000/songs")
-  .then(response => {
-    // if response have a succcessful status code
-    if(response.ok) {
-      return response.json()
-    }
-    else {
-      alert("Something went wrong")
-    }
+//   fetch("http://localhost:3000/songs")
+//   .then(response => {
+//     // if response have a succcessful status code
+//     if(response.ok) {
+//       return response.json()
+//     }
+//     else {
+//       alert("Something went wrong")
+//     }
     
-  })
-  .then(song_data => {
-    const moodList = [];
-      song_data.map(data => {
-        // console.log(data.mood[0]);
-        if(data.mood[0] === mood){
-          const songObj = {
-            songTitle: data.songTitle,
-            artistName: data.artist,
-            image: data.image,
-            url: data.url.youtube
-          };
-          moodList.push(songObj);
-        }
-      })
+//   })
+//   .then(song_data => {
+//     const moodList = [];
+//       song_data.map(data => {
+//         // console.log(data.mood[0]);
+//         if(data.mood[0] === mood){
+//           const songObj = {
+//             songTitle: data.songTitle,
+//             artistName: data.artist,
+//             image: data.image,
+//             url: data.url.youtube
+//           };
+//           moodList.push(songObj);
+//         }
+//       })
 
-      console.log(moodList, "moodList");
-     const songChoice = getRandom(moodList);
-     //songChoice is a selected song object
-     console.log(songChoice, "songChoice");
-     centerDisplay(songChoice);
-  })
-  .catch(error => alert(`error with get song fetch --> ${error}`)) 
-}
+//       console.log(moodList, "moodList");
+//      const songChoice = getRandom(moodList);
+//      //songChoice is a selected song object
+//      console.log(songChoice, "songChoice");
+//      centerDisplay(songChoice);
+//   })
+//   .catch(error => alert(`error with get song fetch --> ${error}`)) 
+// }
 
 
-function getRandom(list){
-  const randomNumber = Math.floor(Math.random() * list.length);
-  return list[randomNumber];
-}
+// function getRandom(list){
+//   const randomNumber = Math.floor(Math.random() * list.length);
+//   return list[randomNumber];
+// }
 
 
 //  //this function renders an object to the target div,
@@ -352,7 +352,15 @@ function getRandom(list){
 //   button.appendChild(text);
 //   text.appendChild(title);
 //   text.appendChild(songArtist);
+//   selectedDiv.appendChild(button);
+//   button.appendChild(stockImage);
+//   button.appendChild(favoriteButton)
+//   button.appendChild(text);
+//   text.appendChild(title);
+//   text.appendChild(songArtist);
 
+//   // Shows correct like image depending on state
+//   object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
 //   // Shows correct like image depending on state
 //   object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
 
