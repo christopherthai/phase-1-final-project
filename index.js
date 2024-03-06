@@ -32,6 +32,7 @@ const addSubmitListener = () => {
 
 }
 
+
 // Get the input to change the location in the navigation bar 
 const addChangeLocationSubmitListener = () => {
 
@@ -304,109 +305,77 @@ function getRandom(list){
 }
 
 
-//  //this function renders an object to the target div,
-//  //assuming target div is a string     
-//  function renderSong(object, targetDiv){
-//    const selectedDiv = getElementById(targetDiv);
-
-
-
-//  //this function renders an object to the target div,
-//  //assuming target div is a string  
- 
- 
-//  function renderSong(object, targetDiv){
-//    const selectedDiv = document.getElementById(targetDiv);
-//    const button = document.createElement("button");
-//    const stockImage = document.createElement("img");
-//    const image = document.createElement('div');
-//    const text = document.createElement("div");
-//    const title = document.createElement("h4");
-//    const songArtist = document.createElement("h4");
-   
-//    image.src = stockImage;
-//    const favoriteButton = document.createElement("img")
-   
-//   image.src = stockImage;
-//   button.id = "suggested-song";
-//   button.className = "song-button";
-//   stockImage.id = "stock-album-cover";
-//   text.id = "song-text";
-//   title.value = object.songTitle;
-//   songArtist.value = object.artist;
-
-//   selectedDiv.appendChild(button);
-//   button.appendChild(stockImage);
-//   button.appendChild(text);
-//   text.appendChild(title);
-//   text.appendChild(songArtist);
-
-//   title.textContent = object.songTitle;
-//   songArtist.textContent = object.artist;
-//   favoriteButton.src = "./favoriteEmpty.png"
-//   favoriteButton.id = "favorite-button"
-
-//   selectedDiv.appendChild(button);
-//   button.appendChild(stockImage);
-//   button.appendChild(favoriteButton)
-//   button.appendChild(text);
-//   text.appendChild(title);
-//   text.appendChild(songArtist);
-
-//   // Shows correct like image depending on state
-//   object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
-
-//   //post favorite or not favorite to songsDb
-//   favoriteButton.addEventListener("click", (e)=>{
-//     fetch(`http://localhost:3000/songs`,{
-//         method:"POST",
-//         header:{
-//           "content-Type":"application/json"
-//         },
-//          body:JSON.stringify({"favorite":!object.favorite})
-//     })
-//     .then(response => {
-//       if(response.ok) {
-//          console.log(response.json())
-//       }
-//       else {
-//         alert("Something went wrong with favorite button")
-//       }
-      
-//     })
-
-
-//   })
+//this function renders an object to the target div,
+//assuming target div is a string      
+function renderSong(object, targetDiv){
+  const selectedDiv = document.getElementById(targetDiv);
+  const button = document.createElement("button");
+  const stockImage = document.createElement("img");
+  //if there is an album cover use image variable
+  // const image = document.createElement('div');
+  const text = document.createElement("div");
+  const title = document.createElement("h4");
+  const songArtist = document.createElement("h4");
+  const favoriteButton = document.createElement("img")
   
-// }
+  button.id = "suggested-song";
+  button.className = "song-button";
+  stockImage.id = "stock-album-cover";
+  text.id = "song-text";
 
-// // render test
-// const testObject ={
-//   songTitle: "sample song",
-//   artist: "Drake",
-//   image: "",
-//   url: "dddd",
-//   favorite:true
-// }
-// renderSong(testObject,"playlist-container")
+  selectedDiv.appendChild(button);
+  button.appendChild(stockImage);
+  button.appendChild(text);
+  text.appendChild(title);
+  text.appendChild(songArtist);
+  title.textContent = object.songTitle;
+  songArtist.textContent = object.artist;
+  favoriteButton.src = "./favoriteEmpty.png"
+  favoriteButton.id = "favorite-button"
 
+  selectedDiv.appendChild(button);
+  button.appendChild(stockImage);
+  button.appendChild(favoriteButton)
+  button.appendChild(text);
+  text.appendChild(title);
+  text.appendChild(songArtist);
 
-// function main(){
-//   getSong("Excited");
+  // Shows correct like image depending on state
+  object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
 
-// suggestedSong.addEventListener("click", ()=>{
-//   console.log("I'm clicked, baby!")
-// })
+  // post favorite or not favorite to songsDb
+  favoriteButton.addEventListener("click", (e)=>{
+    fetch("http://localhost:3000/songs",{
+      method:"POST",
+      header:{
+        "content-Type":"application/json"
+      },
+      body:JSON.stringify({"favorite":!object.favorite})
+    })
+    .then(response => {
+      if(response.ok) {
+        console.log(response.json())
+      }
+      else {
+        alert("Something went wrong with favorite button")
+      }
+      
+    })
+    
+  })
 
-// }
+}
 
-
+//centerDisplay takes in the "Recommended Song" Object from the "getSong" function
+// and inputs the object's elements into the Center Display button
+function centerDisplay(songChoice){
+  const div = document.getElementById("top-body-container");
+  console.log(songChoice, "centerDisplay");
+  renderSong(songChoice, div);
+}
 
 function main(){
-  
-  addSubmitListener()
-  addChangeLocationSubmitListener()
-
+  getSong("Excited");
 }
 
 main();
