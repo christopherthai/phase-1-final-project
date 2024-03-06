@@ -1,11 +1,13 @@
 
 let city
+let state
 
 // Get the inputs of the location from the user
 const addSubmitListener = () => {
 
   const locationForm = document.querySelector('#location-input')
   const weatherDisplay = document.querySelector(".weather-display")
+  const city_state = document.querySelector("#city-state")
 
   locationForm.addEventListener('submit', (event) => {
     
@@ -15,7 +17,11 @@ const addSubmitListener = () => {
     let locationInput = event.target.location.value
     let parseLocationInput = locationInput.split(', ') // Separate the string to have city, state, and country as separate elements in an array
 
-    city = parseLocationInput[0]
+    city = parseLocationInput[0] // Save the city value to the city global variable
+    state = parseLocationInput[1] // Save the state value to the state global variable
+
+    city_state.textContent = `${city}, ${state}`
+
     getCoordinates(parseLocationInput[0], parseLocationInput[1], parseLocationInput[2])
 
   })
