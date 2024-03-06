@@ -1,3 +1,4 @@
+
 // Get the inputs of the location from the user
 const addSubmitListener = () => {
 
@@ -15,7 +16,6 @@ const addSubmitListener = () => {
   })
 
 }
- 
 
 // Get the latitude and longitude coordinates from the Weather API
 const getCoordinates = (city, state, country) => {
@@ -79,20 +79,88 @@ const getWeatherCode = (latitude, longitude) => {
   .catch(error => alert(error)) 
 }
 
-// Display weather condition on the webpage
+// Display the weather condition base on the weather code on the webpage
 const displayWeatherCondition = (weather_code) => {
-  
+
+  const weatherDisplay = document.querySelector(".weather-display")
+  const image = document.createElement("img")
+
+  if(weather_code === 0) {
+
+    image.src = "./weather-icons-master/production/fill/all/clear-day.svg"
+
+  } else if((weather_code >= 1) && (weather_code <= 3)) {
+
+    image.src = "./weather-icons-master/production/fill/all/partly-cloudy-day.svg"
+
+  } else if(weather_code === 4) {
+
+    image.src = "./weather-icons-master/production/fill/all/smoke.svg"
+    
+  } else if(weather_code === 5) {
+
+    image.src = "./weather-icons-master/production/fill/all/haze.svg"
+    
+  } else if((weather_code >= 6) && (weather_code <= 9)) {
+
+    image.src = "./weather-icons-master/production/fill/all/dust-wind.svg"
+    
+  } else if((weather_code >= 10) && (weather_code <= 11)) {
+
+    image.src = "./weather-icons-master/production/fill/all/mist.svg"
+    
+  } else if((weather_code >= 12) && (weather_code <= 13)) {
+
+    image.src = "./weather-icons-master/production/fill/all/partly-cloudy-day.svg"
+    
+  } else if((weather_code >= 14) && (weather_code <= 16)) {
+
+    image.src = "./weather-icons-master/production/fill/all/partly-cloudy-night-rain.svg"
+
+  } else if(weather_code === 17) {
+
+    image.src = "./weather-icons-master/production/fill/all/thunderstorms.svg"
+
+  } else if((weather_code >= 18) && (weather_code <= 19)) {
+
+    image.src = "./weather-icons-master/production/fill/all/overcast.svg"
+
+  } else if(((weather_code >= 20) && (weather_code <= 29)) || (((weather_code >= 60) && (weather_code <= 69))) || ((weather_code >= 78) && (weather_code <= 94))) {
+
+    image.src = "./weather-icons-master/production/fill/all/rain.svg"
+
+  } else if((weather_code >= 30) && (weather_code <= 39)) {
+
+    image.src = "./weather-icons-master/production/fill/all/dust-wind.svg"
+
+  } else if((weather_code >= 40) && (weather_code <= 49)) {
+
+    image.src = "./weather-icons-master/production/fill/all/fog.svg"
+
+  } else if((weather_code >= 50) && (weather_code <= 59)) {
+
+    image.src = "./weather-icons-master/production/fill/all/drizzle.svg"
+
+  } else if((weather_code >= 70) && (weather_code <= 77)) {
+
+    image.src = "./weather-icons-master/production/fill/all/snow.svg"
+
+  } else if((weather_code >= 95) && (weather_code <= 99)) {
+
+    image.src = "./weather-icons-master/production/fill/all/thunderstorms.svg"
+
+  } 
+
+  weatherDisplay.append(image)
   
 }
 
-
-
-// Get mood base on weather
+// Get the mood base on the weather code
 const getWeatherMood = (weather_code) => {
 
   let mood
   
-  if ((weather_code >= 0) && (weather_code <= 3)) {
+  if((weather_code >= 0) && (weather_code <= 3)) {
 
     mood = "Excited"
 
@@ -122,30 +190,38 @@ const getWeatherMood = (weather_code) => {
 
 }
 
-
-// Get song from the db.json file base on the mood
 const getSong = (mood) => {
   
-  fetch(``)
+  fetch(`http://localhost:3000/songs`)
   .then(response => {
-    
     // if response have a succcessful status code
     if(response.ok) {
-      return response.json() // gets returned to the next .then
-    } else {
+      return response.json()
+    }
+    else {
       alert("Something went wrong")
     }
     
   })
   .then(song_data => {
-
-      song_data.forEach(data => {
-        
-        // if () {
-          
-        // }
-
+    const moodList = [];
+      song_data.map(data => {
+        // console.log(data.mood[0]);
+        if(data.mood[0] === mood){
+          const songObj = {
+            songTitle: data.songTitle,
+            artistName: data.artist,
+            image: data.image,
+            url: data.url.youtube
+          };
+          moodList.push(songObj);
+        }
       })
+
+      console.log(moodList, "moodList");
+     const songChoice = getRandom(moodList);
+     //songChoice is a selected song object
+     console.log(songChoice, "songChoice");
   })
   .catch(error => alert(error)) 
 
@@ -153,22 +229,59 @@ const getSong = (mood) => {
 }
 
 
-// function main(){
+function getRandom(list){
+  const randomNumber = Math.floor(Math.random() * list.length);
+  return list[randomNumber];
+}
+
+{/* <button id="suggested-song" class="song-button">
+        <!-- If there is an image display <img  src="" /> -->        <div id="stock-album-cover"></div>
+        <div id="song-text">
+          <h4>Song-Title</h4>
+          <h4>Artist Name</h4>
+        </div>
+        <!-- icon -->
+      </button> */}
 
 
-// }
+ //this function renders an object to the target div,
+ //assuming target div is a string     
+ function renderSong(object, targetDiv){
+   const selectedDiv = getElementById(targetDiv);
+   const button = document.createElement("button");
+   const stockImage = document.createElement("img");
+   const image = document.createElement('div');
+   const text = document.createElement("div");
+   const title = document.createElement("h4");
+   const songArtist = document.createElement("h4");
+   
+   image.src = stockImage;
+  button.id = "suggested-song";
+  button.className = "song-button";
+  stockImage.id = "stock-album-cover";
+  text.id = "song-text";
+  title.value = object.songTitle;
+  songArtist.value = object.artist;
 
-
-
+  selectedDiv.appendChild(button);
+  button.appendChild(stockImage);
+  button.appendChild(text);
+  text.appendChild(title);
+  text.appendChild(songArtist);
+}
 
 const suggestedSong = document.getElementById("suggested-song")
 
 suggestedSong.addEventListener("click", ()=>{
-  console.log("Im clicked baby!")
+  console.log("I'm clicked, baby!")
 })
 
 
+function main(){
+  
+}
 
+main();
 
 // Moods Moods: Somber, Excited, Content, Calming , Hopeful , Nostalgic
 
