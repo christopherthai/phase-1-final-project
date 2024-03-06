@@ -172,7 +172,7 @@ const displayWeatherCondition = (weather_code) => {
 
 
   weatherImage.className = "weather-image"
-  weatherMessage.textContent = `It look like it is ${} in Miami!`
+  weatherMessage.textContent = `It look like it is ${""} in Miami!`
 
   weatherDisplay.append(weatherImage)
   weatherDisplay.append(weatherMessage)
@@ -258,53 +258,31 @@ function getRandom(list){
   return list[randomNumber];
 }
 
-{/* <button id="suggested-song" class="song-button">
-        <!-- If there is an image display <img  src="" /> -->        <div id="stock-album-cover"></div>
-        <div id="song-text">
-          <h4>Song-Title</h4>
-          <h4>Artist Name</h4>
-        </div>
-        <!-- icon -->
-      </button> */}
 
-
- //this function renders an object to the target div,
- //assuming target div is a string     
- function renderSong(object, targetDiv){
-   const selectedDiv = getElementById(targetDiv);
-
-
-
- //this function renders an object to the target div,
- //assuming target div is a string  
+//this function renders an object to the target div,
+//assuming target div is a string     
  
- 
- function renderSong(object, targetDiv){
-   const selectedDiv = document.getElementById(targetDiv);
-   const button = document.createElement("button");
-   const stockImage = document.createElement("img");
-   const image = document.createElement('div');
-   const text = document.createElement("div");
-   const title = document.createElement("h4");
-   const songArtist = document.createElement("h4");
-   
-   image.src = stockImage;
-   const favoriteButton = document.createElement("img")
-   
-  image.src = stockImage;
+function renderSong(object, targetDiv){
+  const selectedDiv = document.getElementById(targetDiv);
+  const button = document.createElement("button");
+  const stockImage = document.createElement("img");
+  //if there is an album cover use image variable
+  // const image = document.createElement('div');
+  const text = document.createElement("div");
+  const title = document.createElement("h4");
+  const songArtist = document.createElement("h4");
+  const favoriteButton = document.createElement("img")
+  
   button.id = "suggested-song";
   button.className = "song-button";
   stockImage.id = "stock-album-cover";
   text.id = "song-text";
-  title.value = object.songTitle;
-  songArtist.value = object.artist;
 
   selectedDiv.appendChild(button);
   button.appendChild(stockImage);
   button.appendChild(text);
   text.appendChild(title);
   text.appendChild(songArtist);
-}
   title.textContent = object.songTitle;
   songArtist.textContent = object.artist;
   favoriteButton.src = "./favoriteEmpty.png"
@@ -320,39 +298,28 @@ function getRandom(list){
   // Shows correct like image depending on state
   object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
 
-  //post favorite or not favorite to songsDb
+  // post favorite or not favorite to songsDb
   favoriteButton.addEventListener("click", (e)=>{
     fetch(`http://localhost:3000/songs`,{
-        method:"POST",
-        header:{
-          "content-Type":"application/json"
-        },
-         body:JSON.stringify({"favorite":!object.favorite})
+      method:"POST",
+      header:{
+        "content-Type":"application/json"
+      },
+      body:JSON.stringify({"favorite":!object.favorite})
     })
     .then(response => {
       if(response.ok) {
-         console.log(response.json())
+        console.log(response.json())
       }
       else {
         alert("Something went wrong with favorite button")
       }
       
     })
-
-
+    
   })
-  
-}
 
-// render test
-const testObject ={
-  songTitle: "sample song",
-  artist: "Drake",
-  image: "",
-  url: "dddd",
-  favorite:true
 }
-renderSong(testObject,"playlist-container")
 
 
 function main(){
