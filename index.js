@@ -356,16 +356,6 @@ renderSong(testObject,"playlist-container")
 
 
 function main(){
-  getSong("Excited");
-
-suggestedSong.addEventListener("click", ()=>{
-  console.log("I'm clicked, baby!")
-})
-
-}
-main();
-
-function main(){
   
 }
 
