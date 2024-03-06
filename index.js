@@ -263,7 +263,7 @@ const getWeatherMood = (weather_code) => {
 
 const getSong = (mood) => {
   
-  fetch(`http://localhost:3000/songs`)
+  fetch("http://localhost:3000/songs")
   .then(response => {
     // if response have a succcessful status code
     if(response.ok) {
@@ -293,10 +293,9 @@ const getSong = (mood) => {
      const songChoice = getRandom(moodList);
      //songChoice is a selected song object
      console.log(songChoice, "songChoice");
+     centerDisplay(songChoice);
   })
   .catch(error => alert(`error with get song fetch --> ${error}`)) 
-
-
 }
 
 
@@ -304,15 +303,6 @@ function getRandom(list){
   const randomNumber = Math.floor(Math.random() * list.length);
   return list[randomNumber];
 }
-
-{/* <button id="suggested-song" class="song-button">
-        <!-- If there is an image display <img  src="" /> -->        <div id="stock-album-cover"></div>
-        <div id="song-text">
-          <h4>Song-Title</h4>
-          <h4>Artist Name</h4>
-        </div>
-        <!-- icon -->
-      </button> */}
 
 
 //  //this function renders an object to the target div,
@@ -425,10 +415,9 @@ main();
 // Moods Moods: Somber, Excited, Content, Calming , Hopeful , Nostalgic
 
 
-//  Ben and Dalton 
-//Body JS and U.I
-
-
-// 1. Connect Button to youtube URL on click
-// 3.Add Like icon ---> on click add to liked Songs Playlist
-// 4. Randomly Recommend a song based on Mood
+//   Ben and Dalton 
+//***Body JS and U.I***
+//To-Do's:
+// 1. Write Center Display Function
+// 2. Connect "Recommended Song" Button to YouTube URL on click
+// 3. Like Icon: on click, add song to "Liked Songs Playlist"
