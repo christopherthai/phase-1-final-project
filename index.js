@@ -137,13 +137,13 @@ const getSong = (mood) => {
             image: data.image,
             url: data.url.youtube
           };
-          moodList.push(song_data);
-          
+          moodList.push(songObj);
         }
       })
 
       console.log(moodList, "moodList");
      const songChoice = getRandom(moodList);
+     //songChoice is a selected song object
      console.log(songChoice, "songChoice");
   })
   .catch(error => alert(error)) 
@@ -155,6 +155,44 @@ const getSong = (mood) => {
 function getRandom(list){
   const randomNumber = Math.floor(Math.random() * list.length);
   return list[randomNumber];
+}
+
+{/* <button id="suggested-song" class="song-button">
+        <!-- If there is an image display <img  src="" /> -->
+        <div id="stock-album-cover"></div>
+        <div id="song-text">
+          <h4>Song-Title</h4>
+          <h4>Artist Name</h4>
+        </div>
+        <!-- icon -->
+      </button> */}
+
+
+ //this function renders an object to the target div,
+ //assuming target div is a string     
+ function renderSong(object, targetDiv){
+   const selectedDiv = getElementById(targetDiv);
+   const button = document.createElement("button");
+   const stockImage = document.createElement("img");
+   const image = document.createElement('div');
+   const text = document.createElement("div");
+   const title = document.createElement("h4");
+   const songArtist = document.createElement("h4");
+   
+   image.src = stockImage;
+  button.id = "suggested-song";
+  button.className = "song-button";
+  stockImage.id = "stock-album-cover";
+  text.id = "song-text";
+  title.value = object.songTitle;
+  songArtist.value = object.artist;
+
+  selectedDiv.appendChild(button);
+  button.appendChild(stockImage);
+  button.appendChild(text);
+  text.appendChild(title);
+  text.appendChild(songArtist);
+  
 }
 
 
