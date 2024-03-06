@@ -1,4 +1,42 @@
 
+/**
+ * ----------------------------------------
+ * Favorite Icon animation shadow-pop-bl
+ * ----------------------------------------
+ */
+ @-webkit-keyframes shadow-pop-bl {
+    0% {
+      -webkit-box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+              box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+      -webkit-transform: translateX(0) translateY(0);
+              transform: translateX(0) translateY(0);
+    }
+    100% {
+      -webkit-box-shadow: -1px 1px #3e3e3e, -2px 2px #3e3e3e, -3px 3px #3e3e3e, -4px 4px #3e3e3e, -5px 5px #3e3e3e, -6px 6px #3e3e3e, -7px 7px #3e3e3e, -8px 8px #3e3e3e;
+              box-shadow: -1px 1px #3e3e3e, -2px 2px #3e3e3e, -3px 3px #3e3e3e, -4px 4px #3e3e3e, -5px 5px #3e3e3e, -6px 6px #3e3e3e, -7px 7px #3e3e3e, -8px 8px #3e3e3e;
+      -webkit-transform: translateX(8px) translateY(-8px);
+              transform: translateX(8px) translateY(-8px);
+    }
+  }
+  @keyframes shadow-pop-bl {
+    0% {
+      -webkit-box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+              box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+      -webkit-transform: translateX(0) translateY(0);
+              transform: translateX(0) translateY(0);
+    }
+    100% {
+      -webkit-box-shadow: -1px 1px #3e3e3e, -2px 2px #3e3e3e, -3px 3px #3e3e3e, -4px 4px #3e3e3e, -5px 5px #3e3e3e, -6px 6px #3e3e3e, -7px 7px #3e3e3e, -8px 8px #3e3e3e;
+              box-shadow: -1px 1px #3e3e3e, -2px 2px #3e3e3e, -3px 3px #3e3e3e, -4px 4px #3e3e3e, -5px 5px #3e3e3e, -6px 6px #3e3e3e, -7px 7px #3e3e3e, -8px 8px #3e3e3e;
+      -webkit-transform: translateX(8px) translateY(-8px);
+              transform: translateX(8px) translateY(-8px);
+    }
+  }
+  
+
+
+
+
 :root{
     --body-light: #F8F8F8;
     --primary-color: #FF5555;
@@ -19,17 +57,17 @@
 }
 header{
     height: 50vh;
-    border:solid 2px yellow;
+    border:solid 2px black;
     margin:0 0 5% 0 ;
 }
 
 /* body stuff */
 section{
-    border:solid 2px black;
+    /* border:solid 2px black; */
     margin: 0 5% 0 0;
 }
 #top-body-container{
-    border:solid 2px red;
+    /* border:solid 2px red; */
     width: 70%;
     margin: 0 auto;
     display: flex;
@@ -77,8 +115,15 @@ section{
     box-shadow: var(--song-button-shadow)
 }
 #suggested-song:hover{
-    transform: translate(2px,2px)
+    transform: translate(2px,2px);
+    color: white;
+    background: #FF5555;
+
 }
+#suggested-song:hover > #stock-album-cover{
+    background-color: white;
+}
+
 #stock-album-cover{
     
     background-color: var(--primary-color);
@@ -103,6 +148,11 @@ section{
 
     width: 7%;
 }
+#favorite-button:hover{
+    -webkit-animation: shadow-pop-bl 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+	        animation: shadow-pop-bl 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+}
+
 
 /* Playlist Stuff */
 #playlist-container{
@@ -112,10 +162,16 @@ section{
     padding: 1em;
     margin: 3em auto;
     border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 #playlist-container h1{
     text-align: center;
     letter-spacing: 2px;
     font-weight: 500;
+    margin: 0 0 1em 0;
     
 }
