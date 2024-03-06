@@ -1,0 +1,27 @@
+:root {
+    --primary-color: #000000; /* Black */
+    --secondary-color: #ffffff; /* White */
+    --text-color: #000000; /* Black */
+    --background-color: #ffffff; /* White */
+}
+
+[data-theme="lightBlue"] {
+    --primary-color: #add8e6; /* Light Blue */
+    --secondary-color: #000080; /* Dark Blue */
+    --text-color: #050740; /* dwm_veryDarkBlue */
+    --background-color: #e0f7fa; /* Very Pale Light Blue */
+}
+
+[data-theme="darkBlue"] {
+    --primary-color: #000080; /* Dark Blue */
+    --secondary-color: #add8e6; /* Light Blue */
+    --text-color: #f0f4f5; /* dwm_veryLightBlue */
+    --background-color: #000033; /* Deep Dark Blue */
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Add your other styles here, using the CSS variables */
