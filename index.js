@@ -192,6 +192,8 @@ function getRandom(list){
   button.appendChild(text);
   text.appendChild(title);
   text.appendChild(songArtist);
+
+  
 }
 
 
