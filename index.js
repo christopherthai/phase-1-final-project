@@ -32,6 +32,38 @@ const addSubmitListener = () => {
 
 }
 
+
+// Get the input to change the location in the navigation bar 
+const addChangeLocationSubmitListener = () => {
+
+  const changeLocationForm = document.querySelector('#change-location')
+  const weatherDisplay = document.querySelector(".weather-display")
+  const city_state = document.querySelector("#city-state")
+  const display_location = document.querySelector(".display-location")
+
+  changeLocationForm.addEventListener('submit', (event) => {
+    
+    event.preventDefault()
+    weatherDisplay.innerHTML = ""
+
+    let locationInput = event.target.search.value
+    let parseLocationInput = locationInput.split(', ') // Separate the string to have city, state, and country as separate elements in an array
+
+    city = parseLocationInput[0] // Save the city value to the city global variable
+    state = parseLocationInput[1] // Save the state value to the state global variable
+
+    city_state.textContent = `${city}, ${state}`// Add the city and state to the city-state element on the html file
+    display_location.textContent = `${city}, ${state}`// Add the city and state to the display location element on the html file
+
+    getCoordinates(parseLocationInput[0], parseLocationInput[1], parseLocationInput[2])
+
+    event.target.reset();
+
+  })
+
+}
+
+
 // Get the latitude and longitude coordinates from the Weather API
 const getCoordinates = (city, state, country) => {
   
@@ -384,6 +416,7 @@ function getRandom(list){
 function main(){
   
   addSubmitListener()
+  addChangeLocationSubmitListener()
 
 }
 
