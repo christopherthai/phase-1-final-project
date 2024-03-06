@@ -83,76 +83,76 @@ const getWeatherCode = (latitude, longitude) => {
 const displayWeatherCondition = (weather_code) => {
 
   const weatherDisplay = document.querySelector(".weather-display")
-  const image = document.createElement("img")
+  const weatherImage = document.createElement("img")
 
   if(weather_code === 0) {
 
-    image.src = "./weather-icons-master/production/fill/all/clear-day.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/clear-day.svg"
 
   } else if((weather_code >= 1) && (weather_code <= 3)) {
 
-    image.src = "./weather-icons-master/production/fill/all/partly-cloudy-day.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/partly-cloudy-day.svg"
 
   } else if(weather_code === 4) {
 
-    image.src = "./weather-icons-master/production/fill/all/smoke.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/smoke.svg"
     
   } else if(weather_code === 5) {
 
-    image.src = "./weather-icons-master/production/fill/all/haze.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/haze.svg"
     
   } else if((weather_code >= 6) && (weather_code <= 9)) {
 
-    image.src = "./weather-icons-master/production/fill/all/dust-wind.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/dust-wind.svg"
     
   } else if((weather_code >= 10) && (weather_code <= 11)) {
 
-    image.src = "./weather-icons-master/production/fill/all/mist.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/mist.svg"
     
   } else if((weather_code >= 12) && (weather_code <= 13)) {
 
-    image.src = "./weather-icons-master/production/fill/all/partly-cloudy-day.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/partly-cloudy-day.svg"
     
   } else if((weather_code >= 14) && (weather_code <= 16)) {
 
-    image.src = "./weather-icons-master/production/fill/all/partly-cloudy-night-rain.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/partly-cloudy-night-rain.svg"
 
   } else if(weather_code === 17) {
 
-    image.src = "./weather-icons-master/production/fill/all/thunderstorms.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/thunderstorms.svg"
 
   } else if((weather_code >= 18) && (weather_code <= 19)) {
 
-    image.src = "./weather-icons-master/production/fill/all/overcast.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/overcast.svg"
 
   } else if(((weather_code >= 20) && (weather_code <= 29)) || (((weather_code >= 60) && (weather_code <= 69))) || ((weather_code >= 78) && (weather_code <= 94))) {
 
-    image.src = "./weather-icons-master/production/fill/all/rain.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/rain.svg"
 
   } else if((weather_code >= 30) && (weather_code <= 39)) {
 
-    image.src = "./weather-icons-master/production/fill/all/dust-wind.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/dust-wind.svg"
 
   } else if((weather_code >= 40) && (weather_code <= 49)) {
 
-    image.src = "./weather-icons-master/production/fill/all/fog.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/fog.svg"
 
   } else if((weather_code >= 50) && (weather_code <= 59)) {
 
-    image.src = "./weather-icons-master/production/fill/all/drizzle.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/drizzle.svg"
 
   } else if((weather_code >= 70) && (weather_code <= 77)) {
 
-    image.src = "./weather-icons-master/production/fill/all/snow.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/snow.svg"
 
   } else if((weather_code >= 95) && (weather_code <= 99)) {
 
-    image.src = "./weather-icons-master/production/fill/all/thunderstorms.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/thunderstorms.svg"
 
   } 
 
-  weatherDisplay.append(image)
-  
+  weatherDisplay.append(weatherImage)
+
 }
 
 // Get the mood base on the weather code
