@@ -1,0 +1,38 @@
+{
+    "id": 1,
+    "title": "Blowin' In The Wind",
+    "artist": "Bob Dylan",
+    "album": "The Freewheelin' Bob Dylan",
+    "year": 1962,
+    "copyrightYear": 1962,
+    "genre": "Folk",
+    "duration": "2:48",
+    "cover": "https://upload.wikimedia.org/wikipedia/en/4/45/The_Freewheelin%27_Bob_Dylan.jpg",
+    "key": "G",
+    "mode": "Major",
+    "tags": ["protest", "freedom", "civil rights", "social justice"],
+    "sheetMusic": "https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0040613",
+    "tabs": "https://tabs.ultimate-guitar.com/tab/bob-dylan/blowin-in-the-wind-chords-108",
+    "chords": "https://tabs.ultimate-guitar.com/tab/bob-dylan/blowin-in-the-wind-chords-108",
+    "linkToLyrics": "https://genius.com/Bob-dylan-blowin-in-the-wind-lyrics",
+    "legalInfo": {
+        "copyrightHolder": "Bob Dylan",
+        "generalContact": "https://bobdylan.com/",
+        "singlePointOfContact": "Blowin' In The Wind lyrics © Special Rider Music, Universal Tunes"
+    },
+    "vibeMoodInfo": {
+        "vibeMood": "Contemplative, Reflective, Protest, Anti-war, Freedom, Civil Rights, Social Justice"
+    },
+    "lyrics": "How many roads must a man walk down\nBefore you call him a man?\nHow many seas must a white dove sail\nBefore she sleeps in the sand?\nYes, and how many times must the cannonballs fly\nBefore they're forever banned?\nThe answer, my friend, is blowin' in the wind\nThe answer is blowin' in the wind\nYes, and how many years must a mountain exist\nBefore it is washed to the sea?\nAnd how many years can some people exist\nBefore they're allowed to be free?\nYes, and how many times can a man turn his head\nAnd pretend that he just doesn't see?\nThe answer, my friend, is blowin' in the wind\nThe answer is blowin' in the wind\nYes, and how many times must a man look up\nBefore he can see the sky?\nAnd how many ears must one man have\nBefore he can hear people cry?\nYes, and how many deaths will it take 'til he knows\nThat too many people have died?\nThe answer, my friend, is blowin' in the wind\nThe answer is blowin' in the wind",
+    "links": {
+        "spotify": "https://open.spotify.com/track/3IDku3eOLQHMksH5c13JqL",
+        "youtube": "https://www.youtube.com/watch?v=vWwgrjjIMXA",
+        "applemusic": "https://music.apple.com/us/album/blowin-in-the-wind/158228032?i=158228041",
+        "soundcloud": "TODO"
+    },
+    "credits": {
+        "vocals": "Bob Dylan",
+        "guitars": "Bob Dylan",
+        "harmonica": "Bob Dylan"
+    }
+}

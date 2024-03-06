@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MusicMatchR App</title>
+</head>
+<body>
+    <form id="song-form">
+        <table>
+            <tr>
+                <th colspan="4">MusicMatchR App</th>
+            </tr>
+            <tr>
+                <th>songID</th>
+                <th>WeatherWords</th>
+                <th>VibeWords</th>
+                <th>LyricsWords</th>
+            </tr>
+            <tr>
+                <td><input type="text" id="songID" name="songID"></td>
+                <td><input type="text" id="weatherWords" name="weatherWords"></td>
+                <td><input type="text" id="vibeWords" name="vibeWords"></td>
+                <td><input type="text" id="lyricsWords" name="lyricsWords"></td>
+            </tr>
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="filtered-songs-container"></div>
+
+    <script>
+        let songs = [];
+
+        // Fetch the songs from list-of-songs.json
+        fetch('./3-songs-only.json')
+            .then(response => response.json())
+            .then(data => {
+                songs = data;
+
+                // Handle the form submission
+                document.getElementById('song-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+
+                    // Get the input values
+                    let songId = document.getElementById('songID').value;
+                    let weatherWords = document.getElementById('weatherWords').value.toLowerCase();
+                    let vibeWords = document.getElementById('vibeWords').value.toLowerCase();
+                    let lyricsWords = document.getElementById('lyricsWords').value.toLowerCase();
+
+                    // Filter the songs based on the input values
+                    let filteredSongs = songs.filter(song => 
+                        song.id == songId &&
+                        song.lyrics.toLowerCase().includes(lyricsWords) &&
+                        song.vibeMoodInfo.vibeMood.toLowerCase().includes(vibeWords) &&
+                        song.weatherWords.toLowerCase().includes(weatherWords)
+                    );
+
+                    // Remove any previously displayed songs
+                    let displayedSongsContainer = document.getElementById('filtered-songs-container');
+                    displayedSongsContainer.innerHTML = '';
+
+                    // Display the filtered songs or a "No results found" message
+                    if (filteredSongs.length === 0) {
+                        displayedSongsContainer.textContent = 'No results found';
+                    } else {
+                        filteredSongs.forEach(song => {
+                            let songElement = document.createElement('p');
+                            songElement.className = 'displayed-song';
+                            songElement.textContent = `Song: ${song.title}, Artist: ${song.artist}`;
+                            displayedSongsContainer.appendChild(songElement);
+                        });
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching songs:', error));
+    </script>
+</body>
+</html>

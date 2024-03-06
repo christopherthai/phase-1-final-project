@@ -1,6 +1,44 @@
 [
     {
-        "id": "1",
+        "id": 1,
+        "title": "Blowin' In The Wind",
+        "artist": "Bob Dylan",
+        "album": "The Freewheelin' Bob Dylan",
+        "year": 1962,
+        "copyrightYear": 1962,
+        "genre": "Folk",
+        "duration": "2:48",
+        "cover": "https://upload.wikimedia.org/wikipedia/en/4/45/The_Freewheelin%27_Bob_Dylan.jpg",
+        "key": "G",
+        "mode": "Major",
+        "tags": ["protest", "freedom", "civil rights", "social justice"],
+        "sheetMusic": "https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0040613",
+        "tabs": "https://tabs.ultimate-guitar.com/tab/bob-dylan/blowin-in-the-wind-chords-108",
+        "chords": "https://tabs.ultimate-guitar.com/tab/bob-dylan/blowin-in-the-wind-chords-108",
+        "linkToLyrics": "https://genius.com/Bob-dylan-blowin-in-the-wind-lyrics",
+        "legalInfo": {
+            "copyrightHolder": "Bob Dylan",
+            "generalContact": "https://bobdylan.com/",
+            "singlePointOfContact": "Blowin' In The Wind lyrics © Special Rider Music, Universal Tunes"
+        },
+        "vibeMoodInfo": {
+            "vibeMood": "Contemplative, Reflective, Protest, Anti-war, Freedom, Civil Rights, Social Justice"
+        },
+        "lyrics": "How many roads must a man walk down\nBefore you call him a man?\nHow many seas must a white dove sail\nBefore she sleeps in the sand?\nYes, and how many times must the cannonballs fly\nBefore they're forever banned?\nThe answer, my friend, is blowin' in the wind\nThe answer is blowin' in the wind\nYes, and how many years must a mountain exist\nBefore it is washed to the sea?\nAnd how many years can some people exist\nBefore they're allowed to be free?\nYes, and how many times can a man turn his head\nAnd pretend that he just doesn't see?\nThe answer, my friend, is blowin' in the wind\nThe answer is blowin' in the wind\nYes, and how many times must a man look up\nBefore he can see the sky?\nAnd how many ears must one man have\nBefore he can hear people cry?\nYes, and how many deaths will it take 'til he knows\nThat too many people have died?\nThe answer, my friend, is blowin' in the wind\nThe answer is blowin' in the wind",
+        "links": {
+            "spotify": "https://open.spotify.com/track/3IDku3eOLQHMksH5c13JqL",
+            "youtube": "https://www.youtube.com/watch?v=vWwgrjjIMXA",
+            "applemusic": "https://music.apple.com/us/album/blowin-in-the-wind/158228032?i=158228041",
+            "soundcloud": "TODO"
+        },
+        "credits": {
+            "vocals": "Bob Dylan",
+            "guitars": "Bob Dylan",
+            "harmonica": "Bob Dylan"
+        }
+    },
+    {
+        "id": 2,
         "title": "Bohemian Rhapsody",
         "artist": "Queen",
         "legalInfo": {
@@ -28,7 +66,7 @@
         }
     },
     {
-        "id": "2",
+        "id": 3,
         "title": "Bridge Over Troubled Water",
         "artist": "Simon & Garfunkel",
         "legalInfo": {
@@ -49,7 +87,7 @@
         }
     },
     {
-        "id": "3",
+        "id": 4,
         "title": "Californication",
         "artist": "Red Hot Chili Peppers",
         "legalInfo": {
@@ -76,8 +114,9 @@
             "xTraInfo": "Songwriters: Anthony Kiedis / Chad Gaylord Smith / John Anthony Frusciante / Michael Peter Balzary Californication lyrics Peermusic Publishing"
         }
     },
+
     {
-        "id": "4",
+        "id": 5,
         "title": "Don't Worry, Be Happy",
         "artist": "Bobby McFerrin",
         "legalInfo": {
@@ -101,8 +140,9 @@
             "instrumentation": "Bobby McFerrin"
         }
     },
+
     {
-        "id": "5",
+        "id": 6,
         "title": "Everywhere",
         "artist": "Fleetwood Mac",
         "legalInfo": {
@@ -130,7 +170,7 @@
         }
     },
     {
-        "id": "6",
+        "id": 7,
         "title": "Hotel California",
         "artist": "The Eagles",
         "legalInfo": {
@@ -160,7 +200,7 @@
         }
     },
     {
-        "id": "7",
+        "id": 8,
         "title": "Mad Hatter",
         "artist": "Melanie Martinez",
         "legalInfo": {
@@ -186,7 +226,7 @@
         }
     },
     {
-        "id": "8",
+        "id": 9,
         "title": "My Way",
         "artist": "Frank Sinatra",
         "legalInfo": {
@@ -210,8 +250,9 @@
             "arrangement": "Don Costa"
         }
     },
+
     {
-        "id": "9",
+        "id": 10,
         "title": "Revolution",
         "artist": "The Beatles",
         "legalInfo": {
@@ -239,7 +280,7 @@
         }
     },
     {
-        "id": "10",
+        "id": 11,
         "title": "Smells Like Teen Spirit",
         "artist": "Nirvana",
         "legalInfo": {
@@ -266,7 +307,7 @@
         }
     },
     {
-        "id": "11",
+        "id": 12,
         "title": "Strong Enough",
         "artist": "Sheryl Crow",
         "legalInfo": {
@@ -294,7 +335,7 @@
         }
     },
     {
-        "id": "12",
+        "id": 13,
         "title": "Tears in Heaven",
         "artist": "Eric Clapton",
         "legalInfo": {
@@ -322,7 +363,7 @@
         }
     },
     {
-        "id": "13",
+        "id": 14,
         "title": "The Wind",
         "artist": "Cat Stevens",
         "legalInfo": {
@@ -348,7 +389,7 @@
         }
     },
     {
-        "id": "14",
+        "id": 15,
         "title": "Time Flies",
         "artist": "Dainis W. Michel",
         "legalInfo": {
@@ -377,7 +418,7 @@
         }
     },
     {
-        "id": "15",
+        "id": 16,
         "title": "Wish You Were Here",
         "artist": "Pink Floyd",
         "legalInfo": {
@@ -405,7 +446,7 @@
         }
     },
     {
-        "id": "16",
+        "id": 17,
         "title": "Waterloo",
         "artist": "ABBA",
         "legalInfo": {
@@ -431,4 +472,6 @@
             "drums": "Ola Brunkert"
         }
     }
+
+    
 ]

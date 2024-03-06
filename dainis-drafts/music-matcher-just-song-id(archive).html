@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MusicMatchR App</title>
+    <script type="text/javascript" defer src="./songFinderID.js"></script>
+</head>
+<body>
+    <form id="song-form">
+        <table>
+            <tr>
+                <th colspan="4">MusicMatchR App</th>
+            </tr>
+            <tr>
+                <th>songID</th>
+                <th>WeatherWords</th>
+                <th>VibeWords</th>
+                <th>LyricsWords</th>
+            </tr>
+            <tr>
+                <td><input type="text" id="songID" name="songID"></td>
+                <td><input type="text" id="weatherWords" name="weatherWords"></td>
+                <td><input type="text" id="vibeWords" name="vibeWords"></td>
+                <td><input type="text" id="lyricsWords" name="lyricsWords"></td>
+            </tr>
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="filtered-songs-container"></div>
+
+</body>
+</html>
