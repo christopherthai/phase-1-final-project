@@ -56,7 +56,7 @@
 
 }
 nav{
-    display:none;
+    display:"";
     background-color: var(--nav-background);
     padding: 3vh 5px;
     position:sticky;
@@ -71,7 +71,7 @@ nav{
     padding: 0 2em;
 }
 #logo{
-    width: 5%;
+    width: 10%;
 }
 .display-location{
     font-size: 1.5rem
@@ -103,6 +103,7 @@ nav{
     flex-direction: column;
     text-align: center;
     justify-content: center;
+    border:solid 1px red;
     
 }
 #location-input h4{
@@ -146,6 +147,8 @@ nav{
     font-size: 1.25rem;
 }
 
+/* header Stuff */
+
 header{
     display:flex;
     justify-content: center;
@@ -156,7 +159,16 @@ header{
     border:solid 2px black;
     margin:0 0 5% 0 ;
 }
-
+/* weather Display Container */
+.weather-display{
+    width:90%;
+    position:absolute;
+    top:20%;
+}
+/* Weather animation Icon */
+.weather-image{
+    width: 35%;
+}
 /* body stuff */
 section{
     /* border:solid 2px black; */
