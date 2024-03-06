@@ -8,6 +8,7 @@ const addSubmitListener = () => {
   const locationForm = document.querySelector('#location-input')
   const weatherDisplay = document.querySelector(".weather-display")
   const city_state = document.querySelector("#city-state")
+  const display_location = document.querySelector(".display-location")
 
   locationForm.addEventListener('submit', (event) => {
     
@@ -20,9 +21,12 @@ const addSubmitListener = () => {
     city = parseLocationInput[0] // Save the city value to the city global variable
     state = parseLocationInput[1] // Save the state value to the state global variable
 
-    city_state.textContent = `${city}, ${state}`
+    city_state.textContent = `${city}, ${state}`// Add the city and state to the city-state element on the html file
+    display_location.textContent = `${city}, ${state}`// Add the city and state to the display location element on the html file
 
     getCoordinates(parseLocationInput[0], parseLocationInput[1], parseLocationInput[2])
+
+    event.target.reset();
 
   })
 
@@ -380,6 +384,7 @@ function getRandom(list){
 function main(){
   
   addSubmitListener()
+
 }
 
 main();
