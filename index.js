@@ -247,7 +247,7 @@ const getSong = (mood) => {
      //songChoice is a selected song object
      console.log(songChoice, "songChoice");
   })
-  .catch(error => alert(error)) 
+  .catch(error => alert(`error with get song fetch --> ${error}`)) 
 
 
 }
@@ -272,6 +272,15 @@ function getRandom(list){
  //assuming target div is a string     
  function renderSong(object, targetDiv){
    const selectedDiv = getElementById(targetDiv);
+
+
+
+ //this function renders an object to the target div,
+ //assuming target div is a string  
+ 
+ 
+ function renderSong(object, targetDiv){
+   const selectedDiv = document.getElementById(targetDiv);
    const button = document.createElement("button");
    const stockImage = document.createElement("img");
    const image = document.createElement('div');
@@ -280,6 +289,9 @@ function getRandom(list){
    const songArtist = document.createElement("h4");
    
    image.src = stockImage;
+   const favoriteButton = document.createElement("img")
+   
+  image.src = stockImage;
   button.id = "suggested-song";
   button.className = "song-button";
   stockImage.id = "stock-album-cover";
@@ -293,13 +305,65 @@ function getRandom(list){
   text.appendChild(title);
   text.appendChild(songArtist);
 }
+  title.textContent = object.songTitle;
+  songArtist.textContent = object.artist;
+  favoriteButton.src = "./favoriteEmpty.png"
+  favoriteButton.id = "favorite-button"
 
-const suggestedSong = document.getElementById("suggested-song")
+  selectedDiv.appendChild(button);
+  button.appendChild(stockImage);
+  button.appendChild(favoriteButton)
+  button.appendChild(text);
+  text.appendChild(title);
+  text.appendChild(songArtist);
+
+  // Shows correct like image depending on state
+  object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
+
+  //post favorite or not favorite to songsDb
+  favoriteButton.addEventListener("click", (e)=>{
+    fetch(`http://localhost:3000/songs`,{
+        method:"POST",
+        header:{
+          "content-Type":"application/json"
+        },
+         body:JSON.stringify({"favorite":!object.favorite})
+    })
+    .then(response => {
+      if(response.ok) {
+         console.log(response.json())
+      }
+      else {
+        alert("Something went wrong with favorite button")
+      }
+      
+    })
+
+
+  })
+  
+}
+
+// render test
+const testObject ={
+  songTitle: "sample song",
+  artist: "Drake",
+  image: "",
+  url: "dddd",
+  favorite:true
+}
+renderSong(testObject,"playlist-container")
+
+
+function main(){
+  getSong("Excited");
 
 suggestedSong.addEventListener("click", ()=>{
   console.log("I'm clicked, baby!")
 })
 
+}
+main();
 
 function main(){
   
@@ -315,6 +379,5 @@ main();
 
 
 // 1. Connect Button to youtube URL on click
-// 2. Display City and Country on side 
 // 3.Add Like icon ---> on click add to liked Songs Playlist
 // 4. Randomly Recommend a song based on Mood
