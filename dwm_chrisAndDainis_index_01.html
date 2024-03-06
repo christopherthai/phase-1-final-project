@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="./css/music-matcher-app-styles.css">
+  <script defer type="module" src="./js/index.js"></script>
+  <script type="text/javascript" defer src="./js/themeSelector.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <nav>
+    <!--Chris and Dainis -->
+    <div class="navigation-bar"> 
+      <a class="logo">Logo</a>
+      <a class="display-location">Location</a>
+      <input type="text" name="search" id="search-location" placeholder="Change Your Location">
+      <input type="submit" id='submit-button' value="Submit" />
+    </div>
+
+  </nav>
+
+      <!-- wrap this -->
+
+  <select id="theme-select">
+    <option value="blackAndWhite">Black and White</option>
+    <option value="lightBlue">Light Blue</option>
+    <option value="darkBlue">Dark Blue</option>
+</select>
+
+  <header>
+    <form id="location-input">
+      <h4>Enter Your City, State, Country</h4>
+      <input type="text" name="location" id="location-name" />
+      <input type="submit" id='submit-button' value="Submit" />
+    </form>
+  </header>
+
+  <div class="weather-display"> 
+
+
+  </div>
+
+  <section>
+    <!-- Tune Of The Day Section -->
+    <div id="top-body-container">
+      <h1>Here is a Popluar Tune to match todays Vibe!</h1>
+      <div id="city-state"><h5>Miami,Fl</h5></div>
+      <button id="suggested-song" class="song-button">
+        <!-- If there is an image display <img  src="" /> -->
+        <div id="stock-album-cover"></div>
+        <div id="song-text">
+          <h4>Song-Title</h4>
+          <h4>Artist Name</h4>
+        </div>
+        <img id="favorite-button" src="./favoriteEmpty.png"/>
+        <!-- icon -->
+      </button>
+    </div>
+  </section>
+
+
+  <!--Playlist Section -->
+  <section >
+    <div id="playlist-container">
+      <h1>Liked Songs Playlist</h1>
+    </div>
+  </section>
+</body>
+
+</html>

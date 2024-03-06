@@ -1,7 +1,7 @@
     let songs = [];
 
     // Fetch the songs from list-of-songs.json
-    fetch('./17-songs.json')
+    fetch('./json/17-songs.json')
         .then(response => response.json())
         .then(data => {
             songs = data;
