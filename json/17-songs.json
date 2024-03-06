@@ -233,6 +233,7 @@
             "copyrightHolder": "Frank Sinatra",
             "copyrightYear": "1969",
             "generalContact": "http://www.sinatra.com/",
+            "copyrightPub": "My Way lyrics © Chrysalis Standards Inc",
             "singlePointOfContact": "unknown at this time"
         },
         "vibeMoodInfo": {
@@ -247,7 +248,10 @@
         },
         "credits": {
             "vocals": "Frank Sinatra",
-            "arrangement": "Don Costa"
+            "arrangement": "Don Costa",
+            "composer(s)": "Jacques Revaux",
+            "Songwriters": "Paul Anka / Claude Francois / Jacques Revaux / Gilles Thibault",
+            "Producer(s)":	"Sonny Burke"
         }
     },
 
