@@ -216,7 +216,7 @@ const getWeatherMood = (weather_code) => {
 
 const getSong = (mood) => {
   
-  fetch(`http://localhost:3000/songs`)
+  fetch("http://localhost:3000/songs")
   .then(response => {
     // if response have a succcessful status code
     if(response.ok) {
@@ -246,10 +246,9 @@ const getSong = (mood) => {
      const songChoice = getRandom(moodList);
      //songChoice is a selected song object
      console.log(songChoice, "songChoice");
+     centerDisplay(songChoice);
   })
   .catch(error => alert(`error with get song fetch --> ${error}`)) 
-
-
 }
 
 
@@ -260,8 +259,7 @@ function getRandom(list){
 
 
 //this function renders an object to the target div,
-//assuming target div is a string     
- 
+//assuming target div is a string      
 function renderSong(object, targetDiv){
   const selectedDiv = document.getElementById(targetDiv);
   const button = document.createElement("button");
@@ -300,7 +298,7 @@ function renderSong(object, targetDiv){
 
   // post favorite or not favorite to songsDb
   favoriteButton.addEventListener("click", (e)=>{
-    fetch(`http://localhost:3000/songs`,{
+    fetch("http://localhost:3000/songs",{
       method:"POST",
       header:{
         "content-Type":"application/json"
@@ -321,9 +319,16 @@ function renderSong(object, targetDiv){
 
 }
 
+//centerDisplay takes in the "Recommended Song" Object from the "getSong" function
+// and inputs the object's elements into the Center Display button
+function centerDisplay(songChoice){
+  const div = document.getElementById("top-body-container");
+  console.log(songChoice, "centerDisplay");
+  renderSong(songChoice, div);
+}
 
 function main(){
-  
+  getSong("Excited");
 }
 
 main();
@@ -331,10 +336,9 @@ main();
 // Moods Moods: Somber, Excited, Content, Calming , Hopeful , Nostalgic
 
 
-//  Ben and Dalton 
-//Body JS and U.I
-
-
-// 1. Connect Button to youtube URL on click
-// 3.Add Like icon ---> on click add to liked Songs Playlist
-// 4. Randomly Recommend a song based on Mood
+//   Ben and Dalton 
+//***Body JS and U.I***
+//To-Do's:
+// 1. Write Center Display Function
+// 2. Connect "Recommended Song" Button to YouTube URL on click
+// 3. Like Icon: on click, add song to "Liked Songs Playlist"
