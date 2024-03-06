@@ -83,75 +83,99 @@ const getWeatherCode = (latitude, longitude) => {
 const displayWeatherCondition = (weather_code) => {
 
   const weatherDisplay = document.querySelector(".weather-display")
-  const weatherImage = document.createElement("img")
+  let weatherImage = document.createElement("img")
+  let weatherMessage = document.createElement('h1')
+  let weatherCondition
+  
 
   if(weather_code === 0) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/clear-day.svg"
+    weatherCondition = "Sunny"
 
   } else if((weather_code >= 1) && (weather_code <= 3)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/partly-cloudy-day.svg"
+    weatherCondition = "Partly Cloudy"
 
   } else if(weather_code === 4) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/smoke.svg"
+    weatherCondition = "Smoke"
     
   } else if(weather_code === 5) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/haze.svg"
+    weatherCondition = "Haze"
     
   } else if((weather_code >= 6) && (weather_code <= 9)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/dust-wind.svg"
+    weatherCondition = "Dust Wind"
     
   } else if((weather_code >= 10) && (weather_code <= 11)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/mist.svg"
+    weatherCondition = "Mist"
     
   } else if((weather_code >= 12) && (weather_code <= 13)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/partly-cloudy-day.svg"
+    weatherCondition = "Partly Cloudy"
     
   } else if((weather_code >= 14) && (weather_code <= 16)) {
 
-    weatherImage.src = "./weather-icons-master/production/fill/all/partly-cloudy-night-rain.svg"
+    weatherImage.src = "./weather-icons-master/production/fill/all/partly-cloudy-rain.svg"
+    weatherCondition = "Partly Cloudy Rain"
 
   } else if(weather_code === 17) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/thunderstorms.svg"
+    weatherCondition = "Thunderstorms"
 
   } else if((weather_code >= 18) && (weather_code <= 19)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/overcast.svg"
+    weatherCondition = "Overcast"
 
   } else if(((weather_code >= 20) && (weather_code <= 29)) || (((weather_code >= 60) && (weather_code <= 69))) || ((weather_code >= 78) && (weather_code <= 94))) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/rain.svg"
+    weatherCondition = "Rain"
 
   } else if((weather_code >= 30) && (weather_code <= 39)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/dust-wind.svg"
+    weatherCondition = "Dust Wind"
 
   } else if((weather_code >= 40) && (weather_code <= 49)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/fog.svg"
+    weatherCondition = "Fog"
 
   } else if((weather_code >= 50) && (weather_code <= 59)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/drizzle.svg"
+    weatherCondition = "Dizzle"
 
   } else if((weather_code >= 70) && (weather_code <= 77)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/snow.svg"
+    weatherCondition = "Snow"
 
   } else if((weather_code >= 95) && (weather_code <= 99)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/thunderstorms.svg"
+    weatherCondition = "Thunderstorms"
 
   } 
 
+
+  weatherImage.className = "weather-image"
+  weatherMessage.textContent = `It look like it is ${} in Miami!`
+
   weatherDisplay.append(weatherImage)
+  weatherDisplay.append(weatherMessage)
 
 }
 
