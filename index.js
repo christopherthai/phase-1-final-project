@@ -1,16 +1,21 @@
 
+let city
+
 // Get the inputs of the location from the user
 const addSubmitListener = () => {
 
   const locationForm = document.querySelector('#location-input')
+  const weatherDisplay = document.querySelector(".weather-display")
 
   locationForm.addEventListener('submit', (event) => {
     
     event.preventDefault()
+    weatherDisplay.innerHTML = ""
 
     let locationInput = event.target.location.value
     let parseLocationInput = locationInput.split(', ') // Separate the string to have city, state, and country as separate elements in an array
 
+    city = parseLocationInput[0]
     getCoordinates(parseLocationInput[0], parseLocationInput[1], parseLocationInput[2])
 
   })
@@ -51,7 +56,7 @@ const getCoordinates = (city, state, country) => {
       
       })
   })
-  .catch(error => alert(error)) 
+  .catch(error => alert("Make sure to have a comma and space after city and state")) 
 }
 
 
@@ -172,7 +177,7 @@ const displayWeatherCondition = (weather_code) => {
 
 
   weatherImage.className = "weather-image"
-  weatherMessage.textContent = `It look like it is ${} in Miami!`
+  weatherMessage.textContent = `It look like it is ${weatherCondition} in ${city}!`
 
   weatherDisplay.append(weatherImage)
   weatherDisplay.append(weatherMessage)
@@ -268,105 +273,107 @@ function getRandom(list){
       </button> */}
 
 
- //this function renders an object to the target div,
- //assuming target div is a string     
- function renderSong(object, targetDiv){
-   const selectedDiv = getElementById(targetDiv);
+//  //this function renders an object to the target div,
+//  //assuming target div is a string     
+//  function renderSong(object, targetDiv){
+//    const selectedDiv = getElementById(targetDiv);
 
 
 
- //this function renders an object to the target div,
- //assuming target div is a string  
+//  //this function renders an object to the target div,
+//  //assuming target div is a string  
  
  
- function renderSong(object, targetDiv){
-   const selectedDiv = document.getElementById(targetDiv);
-   const button = document.createElement("button");
-   const stockImage = document.createElement("img");
-   const image = document.createElement('div');
-   const text = document.createElement("div");
-   const title = document.createElement("h4");
-   const songArtist = document.createElement("h4");
+//  function renderSong(object, targetDiv){
+//    const selectedDiv = document.getElementById(targetDiv);
+//    const button = document.createElement("button");
+//    const stockImage = document.createElement("img");
+//    const image = document.createElement('div');
+//    const text = document.createElement("div");
+//    const title = document.createElement("h4");
+//    const songArtist = document.createElement("h4");
    
-   image.src = stockImage;
-   const favoriteButton = document.createElement("img")
+//    image.src = stockImage;
+//    const favoriteButton = document.createElement("img")
    
-  image.src = stockImage;
-  button.id = "suggested-song";
-  button.className = "song-button";
-  stockImage.id = "stock-album-cover";
-  text.id = "song-text";
-  title.value = object.songTitle;
-  songArtist.value = object.artist;
+//   image.src = stockImage;
+//   button.id = "suggested-song";
+//   button.className = "song-button";
+//   stockImage.id = "stock-album-cover";
+//   text.id = "song-text";
+//   title.value = object.songTitle;
+//   songArtist.value = object.artist;
 
-  selectedDiv.appendChild(button);
-  button.appendChild(stockImage);
-  button.appendChild(text);
-  text.appendChild(title);
-  text.appendChild(songArtist);
-}
-  title.textContent = object.songTitle;
-  songArtist.textContent = object.artist;
-  favoriteButton.src = "./favoriteEmpty.png"
-  favoriteButton.id = "favorite-button"
+//   selectedDiv.appendChild(button);
+//   button.appendChild(stockImage);
+//   button.appendChild(text);
+//   text.appendChild(title);
+//   text.appendChild(songArtist);
 
-  selectedDiv.appendChild(button);
-  button.appendChild(stockImage);
-  button.appendChild(favoriteButton)
-  button.appendChild(text);
-  text.appendChild(title);
-  text.appendChild(songArtist);
+//   title.textContent = object.songTitle;
+//   songArtist.textContent = object.artist;
+//   favoriteButton.src = "./favoriteEmpty.png"
+//   favoriteButton.id = "favorite-button"
 
-  // Shows correct like image depending on state
-  object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
+//   selectedDiv.appendChild(button);
+//   button.appendChild(stockImage);
+//   button.appendChild(favoriteButton)
+//   button.appendChild(text);
+//   text.appendChild(title);
+//   text.appendChild(songArtist);
 
-  //post favorite or not favorite to songsDb
-  favoriteButton.addEventListener("click", (e)=>{
-    fetch(`http://localhost:3000/songs`,{
-        method:"POST",
-        header:{
-          "content-Type":"application/json"
-        },
-         body:JSON.stringify({"favorite":!object.favorite})
-    })
-    .then(response => {
-      if(response.ok) {
-         console.log(response.json())
-      }
-      else {
-        alert("Something went wrong with favorite button")
-      }
+//   // Shows correct like image depending on state
+//   object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
+
+//   //post favorite or not favorite to songsDb
+//   favoriteButton.addEventListener("click", (e)=>{
+//     fetch(`http://localhost:3000/songs`,{
+//         method:"POST",
+//         header:{
+//           "content-Type":"application/json"
+//         },
+//          body:JSON.stringify({"favorite":!object.favorite})
+//     })
+//     .then(response => {
+//       if(response.ok) {
+//          console.log(response.json())
+//       }
+//       else {
+//         alert("Something went wrong with favorite button")
+//       }
       
-    })
+//     })
 
 
-  })
+//   })
   
-}
+// }
 
-// render test
-const testObject ={
-  songTitle: "sample song",
-  artist: "Drake",
-  image: "",
-  url: "dddd",
-  favorite:true
-}
-renderSong(testObject,"playlist-container")
+// // render test
+// const testObject ={
+//   songTitle: "sample song",
+//   artist: "Drake",
+//   image: "",
+//   url: "dddd",
+//   favorite:true
+// }
+// renderSong(testObject,"playlist-container")
+
+
+// function main(){
+//   getSong("Excited");
+
+// suggestedSong.addEventListener("click", ()=>{
+//   console.log("I'm clicked, baby!")
+// })
+
+// }
+
 
 
 function main(){
-  getSong("Excited");
-
-suggestedSong.addEventListener("click", ()=>{
-  console.log("I'm clicked, baby!")
-})
-
-}
-main();
-
-function main(){
   
+  addSubmitListener()
 }
 
 main();
