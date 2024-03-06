@@ -55,8 +55,62 @@
     margin:0;
 
 }
+nav{
+    display:none;
+}
+#location-input{
+    margin-bottom: 30%;
+    width: 80%;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    
+}
+#location-input h4{
+    font-weight: 400;
+    font-size: 2.5rem;
+    text-align:center;
+}
+#location-name{
+    width:90%;
+    height: 60px;
+
+    border:none;
+    border-radius: 12px;
+    box-shadow: var(--song-button-shadow);
+
+    margin-bottom: 2em;
+    font-size:1.25rem;
+    padding-left: 5%;
+}
+
+#submit-button{
+    width: 20%;
+    height: 45px;
+    border-radius: 9px;
+
+    background-color: var(--primary-color);
+    color: white;
+    border:none;
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+    margin-left: 75%;
+}
+
+#location-name::placeholder{
+    color: var(--button-placeholder);
+    font-weight: 400;
+    font-size: 1.25rem;
+}
+
 header{
-    height: 50vh;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+
+
+    height: 100vh;
     border:solid 2px black;
     margin:0 0 5% 0 ;
 }

@@ -257,125 +257,127 @@ const getWeatherMood = (weather_code) => {
   
   }
 
-  getSong(mood)
+  // getSong(mood)
 
 }
 
-const getSong = (mood) => {
+// const getSong = (mood) => {
   
-  fetch("http://localhost:3000/songs")
-  .then(response => {
-    // if response have a succcessful status code
-    if(response.ok) {
-      return response.json()
-    }
-    else {
-      alert("Something went wrong")
-    }
+//   fetch("http://localhost:3000/songs")
+//   .then(response => {
+//     // if response have a succcessful status code
+//     if(response.ok) {
+//       return response.json()
+//     }
+//     else {
+//       alert("Something went wrong")
+//     }
     
-  })
-  .then(song_data => {
-    const moodList = [];
-      song_data.map(data => {
-        // console.log(data.mood[0]);
-        if(data.mood[0] === mood){
-          const songObj = {
-            songTitle: data.songTitle,
-            artistName: data.artist,
-            image: data.image,
-            url: data.url.youtube
-          };
-          moodList.push(songObj);
-        }
-      })
+//   })
+//   .then(song_data => {
+//     const moodList = [];
+//       song_data.map(data => {
+//         // console.log(data.mood[0]);
+//         if(data.mood[0] === mood){
+//           const songObj = {
+//             songTitle: data.songTitle,
+//             artistName: data.artist,
+//             image: data.image,
+//             url: data.url.youtube
+//           };
+//           moodList.push(songObj);
+//         }
+//       })
 
-      console.log(moodList, "moodList");
-     const songChoice = getRandom(moodList);
-     //songChoice is a selected song object
-     console.log(songChoice, "songChoice");
-     centerDisplay(songChoice);
-  })
-  .catch(error => alert(`error with get song fetch --> ${error}`)) 
-}
-
-
-function getRandom(list){
-  const randomNumber = Math.floor(Math.random() * list.length);
-  return list[randomNumber];
-}
+//       console.log(moodList, "moodList");
+//      const songChoice = getRandom(moodList);
+//      //songChoice is a selected song object
+//      console.log(songChoice, "songChoice");
+//      centerDisplay(songChoice);
+//   })
+//   .catch(error => alert(`error with get song fetch --> ${error}`)) 
+// }
 
 
-//this function renders an object to the target div,
-//assuming target div is a string      
-function renderSong(object, targetDiv){
-  const selectedDiv = document.getElementById(targetDiv);
-  const button = document.createElement("button");
-  const stockImage = document.createElement("img");
-  //if there is an album cover use image variable
-  // const image = document.createElement('div');
-  const text = document.createElement("div");
-  const title = document.createElement("h4");
-  const songArtist = document.createElement("h4");
-  const favoriteButton = document.createElement("img")
+// function getRandom(list){
+//   const randomNumber = Math.floor(Math.random() * list.length);
+//   return list[randomNumber];
+// }
+
+
+// //this function renders an object to the target div,
+// //assuming target div is a string      
+// function renderSong(object, targetDiv){
+//   const selectedDiv = document.getElementById(targetDiv);
+//   const button = document.createElement("button");
+//   const stockImage = document.createElement("img");
+//   //if there is an album cover use image variable
+//   // const image = document.createElement('div');
+//   const text = document.createElement("div");
+//   const title = document.createElement("h4");
+//   const songArtist = document.createElement("h4");
+//   const favoriteButton = document.createElement("img")
   
-  button.id = "suggested-song";
-  button.className = "song-button";
-  stockImage.id = "stock-album-cover";
-  text.id = "song-text";
+//   button.id = "suggested-song";
+//   button.className = "song-button";
+//   stockImage.id = "stock-album-cover";
+//   text.id = "song-text";
 
-  selectedDiv.appendChild(button);
-  button.appendChild(stockImage);
-  button.appendChild(text);
-  text.appendChild(title);
-  text.appendChild(songArtist);
-  title.textContent = object.songTitle;
-  songArtist.textContent = object.artist;
-  favoriteButton.src = "./favoriteEmpty.png"
-  favoriteButton.id = "favorite-button"
+//   selectedDiv.appendChild(button);
+//   button.appendChild(stockImage);
+//   button.appendChild(text);
+//   text.appendChild(title);
+//   text.appendChild(songArtist);
+//   title.textContent = object.songTitle;
+//   songArtist.textContent = object.artist;
+//   favoriteButton.src = "./favoriteEmpty.png"
+//   favoriteButton.id = "favorite-button"
 
-  selectedDiv.appendChild(button);
-  button.appendChild(stockImage);
-  button.appendChild(favoriteButton)
-  button.appendChild(text);
-  text.appendChild(title);
-  text.appendChild(songArtist);
+//   selectedDiv.appendChild(button);
+//   button.appendChild(stockImage);
+//   button.appendChild(favoriteButton)
+//   button.appendChild(text);
+//   text.appendChild(title);
+//   text.appendChild(songArtist);
 
-  // Shows correct like image depending on state
-  object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
+//   // Shows correct like image depending on state
+//   object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
 
-  // post favorite or not favorite to songsDb
-  favoriteButton.addEventListener("click", (e)=>{
-    fetch("http://localhost:3000/songs",{
-      method:"POST",
-      header:{
-        "content-Type":"application/json"
-      },
-      body:JSON.stringify({"favorite":!object.favorite})
-    })
-    .then(response => {
-      if(response.ok) {
-        console.log(response.json())
-      }
-      else {
-        alert("Something went wrong with favorite button")
-      }
+//   // post favorite or not favorite to songsDb
+//   favoriteButton.addEventListener("click", (e)=>{
+//     fetch("http://localhost:3000/songs",{
+//       method:"POST",
+//       header:{
+//         "content-Type":"application/json"
+//       },
+//       body:JSON.stringify({"favorite":!object.favorite})
+//     })
+//     .then(response => {
+//       if(response.ok) {
+//         console.log(response.json())
+//       }
+//       else {
+//         alert("Something went wrong with favorite button")
+//       }
       
-    })
+//     })
     
-  })
+//   })
 
-}
+// }
 
-//centerDisplay takes in the "Recommended Song" Object from the "getSong" function
-// and inputs the object's elements into the Center Display button
-function centerDisplay(songChoice){
-  const div = document.getElementById("top-body-container");
-  console.log(songChoice, "centerDisplay");
-  renderSong(songChoice, div);
-}
+// //centerDisplay takes in the "Recommended Song" Object from the "getSong" function
+// // and inputs the object's elements into the Center Display button
+// function centerDisplay(songChoice){
+//   const div = document.getElementById("top-body-container");
+//   console.log(songChoice, "centerDisplay");
+//   renderSong(songChoice, div);
+// }
 
 function main(){
-  getSong("Excited");
+  // getSong("Excited");
+  addSubmitListener()
+  addChangeLocationSubmitListener()
 }
 
 main();
