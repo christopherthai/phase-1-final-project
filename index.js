@@ -329,7 +329,8 @@ const getSong = (mood) => {
           artistName: data.artist,
           image: data.image,
           url: data.url.youtube,
-          favorite:data.favorite
+          favorite:data.favorite,
+          id:data.id
       }
         moodList.push(songObj);
       }
@@ -348,9 +349,7 @@ function getRandom(list){
   return list[randomNumber];
 }
 function playMusic(e,data){
-  console.log(data,"play music data")
   window.open( `${data.url} , 'blank'`)
-  
 }
 
 //this function renders an object to the target div,
@@ -392,41 +391,41 @@ function renderSong(object, targetDiv){
   object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
   // On click send to youtube
   selectedDiv.addEventListener("click", (e) => playMusic(e,object))
-
+  favoriteButton.addEventListener("click",(e) => postFavorite(e,object) )
 
 }
+
+//post favorite or not favorite to songsDb
+function postFavorite(e,object){
+    console.log(object, "this is postFavorite object.id")
+    fetch(`http://localhost:3000/songs/${object.id}`,{
+        method:"PATCH",
+        header:{
+          "content-Type":"application/json"
+        },
+          body:JSON.stringify({"favorite":!object.favorite})
+    })
+    .then(response => {
+      if(response.ok) {
+          console.log(response.json())
+      }
+      else {
+        alert("Something went wrong with favorite button")
+      }
+      
+    })
+  
+}
+  
+
+
+
 
 // Shows The center Suggested Song
 function centerDisplay(songObj){
  renderSong(songObj,"top-body-container")
 }
 
-  
-
-
-//   //post favorite or not favorite to songsDb
-//   favoriteButton.addEventListener("click", (e)=>{
-//     fetch(`http://localhost:3000/songs`,{
-//         method:"POST",
-//         header:{
-//           "content-Type":"application/json"
-//         },
-//          body:JSON.stringify({"favorite":!object.favorite})
-//     })
-//     .then(response => {
-//       if(response.ok) {
-//          console.log(response.json())
-//       }
-//       else {
-//         alert("Something went wrong with favorite button")
-//       }
-      
-//     })
-
-
-//   })
-  
-// }
 
 // render test
 const testObject ={
@@ -451,8 +450,7 @@ main();
 // Moods Moods: Somber, Excited, Content, Calming , Hopeful , Nostalgic
 
 
-//   Ben and Dalton 
 //***Body JS and U.I***
 //To-Do's:
-// 2. Connect "Recommended Song" Button to YouTube URL on click
+
 // 3. Like Icon: on click, add song to "Liked Songs Playlist"
