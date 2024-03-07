@@ -200,7 +200,7 @@ section{
 }
 #city-state{
   position:absolute;
-  top: 70%;
+  top: 80vh;
   left:0;
   width: 15%;
   height: 55px;
