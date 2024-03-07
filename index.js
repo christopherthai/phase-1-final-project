@@ -347,12 +347,16 @@ function getRandom(list){
   const randomNumber = Math.floor(Math.random() * list.length);
   return list[randomNumber];
 }
+function playMusic(e,data){
+  console.log(data,"play music data")
+  window.open( `${data.url} , 'blank'`)
+  
+}
 
-
- //this function renders an object to the target div,
- //assuming target div is a string  
- 
+//this function renders an object to the target div,
+//assuming target div is a string  
 function renderSong(object, targetDiv){
+
   const selectedDiv = document.getElementById(targetDiv)
   const button = document.createElement("button")
   const stockImage = document.createElement("img")
@@ -386,8 +390,10 @@ function renderSong(object, targetDiv){
 
   // Shows correct like image depending on state
   object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
-  // Shows correct like image depending on state
-  object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
+  // On click send to youtube
+  selectedDiv.addEventListener("click", (e) => playMusic(e,object))
+
+
 }
 
 // Shows The center Suggested Song
@@ -448,6 +454,5 @@ main();
 //   Ben and Dalton 
 //***Body JS and U.I***
 //To-Do's:
-// 1. Write Center Display Function
 // 2. Connect "Recommended Song" Button to YouTube URL on click
 // 3. Like Icon: on click, add song to "Liked Songs Playlist"
