@@ -56,7 +56,6 @@
 
 }
 nav{
-    display:"";
     background-color: var(--nav-background);
     padding: 3vh 5px;
     position:sticky;
