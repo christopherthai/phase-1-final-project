@@ -106,7 +106,7 @@ nav{
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    border:solid 1px green;
+    /* border:solid 1px green; */
     
 }
 #location-input h4{
@@ -154,30 +154,30 @@ nav{
 
 header{
   height: 50vh;
-  border:solid 2px black;
+  /* border:solid 2px black; */
   margin:0 0 5% 0 ;
   display:flex;
   justify-content: center;
-  align-items:center;
+  
   /* flex-direction: column-reverse; */
 
   height: 100vh;
-  border:solid 2px black;
-  margin:0 0 5% 0 ;
+  margin:0 0 10% 0 ;
 }
 /* weather Display Container */
 .weather-display{
     width:90%;
     position:absolute;
-    top: -17%;
-    border: blue 2px solid;
+    top: 10%;
+    /* border: blue 2px solid; */
     display: flex;
     justify-content: center;
 }
 /* Weather animation Icon */
 .weather-image, .weather-image-two, .weather-image-three {
-    width: 35%;
-    border: #FF5555 2px solid;
+    width: 30vw;
+    max-width: 200px;
+    /* border: #FF5555 2px solid; */
 }
 /* body stuff */
 section{
@@ -185,7 +185,7 @@ section{
   margin: 0 5% 0 0;
 }
 #top-body-container{
-  /* border:solid 2px red; */
+  border:solid 2px red;
   width: 70%;
   margin: 0 auto;
   display: flex;
@@ -203,7 +203,7 @@ section{
   position:absolute;
   top: 70%;
   left:0;
-  width: 10%;
+  width: 15%;
   height: 55px;
   background-color: var(--primary-color);
   border-radius: 4px;

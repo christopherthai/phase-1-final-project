@@ -11,13 +11,25 @@ window.addEventListener("scroll", () =>{
   
   if (window.scrollY > 500){
     navBar.style.display = "block"
-    console.log(window.scrollY)
   }else if(window.scrollY < 500){
     navBar.style.display ="none"
   }
    
 })
+
+//Miami, Florida, United States
+//Page Scroll from header to body
+function pageScroll() {
+  setTimeout(() => {
+  document.getElementById("top-body-container").scrollIntoView({
+     behavior: "smooth", block: "end", inline: "nearest" });
+
+  },7000
+  )
+}
   
+  
+
 
 // Get the inputs of the location from the user
 const addSubmitListener = () => {
@@ -47,6 +59,8 @@ const addSubmitListener = () => {
 
     // Header Transition
     inputDiv.style.display = "none"
+
+    pageScroll()
 
   })
 
@@ -157,6 +171,7 @@ const displayWeatherCondition = (weather_code) => {
   
   let weatherCondition
   
+
 
   if(weather_code === 0) {
 
@@ -290,109 +305,98 @@ const getWeatherMood = (weather_code) => {
 
 }
 
-// const getSong = (mood) => {
+const getSong = (mood) => {
   
-//   fetch("http://localhost:3000/songs")
-//   .then(response => {
-//     // if response have a succcessful status code
-//     if(response.ok) {
-//       return response.json()
-//     }
-//     else {
-//       alert("Something went wrong")
-//     }
+  fetch("http://localhost:3000/songs")
+  .then(response => {
+    if(response.ok) {
+      return response.json()
+    }
+    else {
+      alert("Something went wrong")
+    }
     
-//   })
-//   .then(song_data => {
-//     const moodList = [];
-//       song_data.map(data => {
-//         // console.log(data.mood[0]);
-//         if(data.mood[0] === mood){
-//           const songObj = {
-//             songTitle: data.songTitle,
-//             artistName: data.artist,
-//             image: data.image,
-//             url: data.url.youtube
-//           };
-//           moodList.push(songObj);
-//         }
-//       })
+  })
+  .then(song_data => {
+    // moodList is a list of objects --> Title,Name,Image,Url
+    const moodList = [];
+    song_data.map(data => {
+      // console.log(data.mood[0]);
+      if(data.mood[0] === mood){
 
-//       console.log(moodList, "moodList");
-//      const songChoice = getRandom(moodList);
-//      //songChoice is a selected song object
-//      console.log(songChoice, "songChoice");
-//      centerDisplay(songChoice);
-//   })
-//   .catch(error => alert(`error with get song fetch --> ${error}`)) 
-// }
+        const songObj = {
+          songTitle: data.songTitle,
+          artistName: data.artist,
+          image: data.image,
+          url: data.url.youtube,
+          favorite:data.favorite
+      }
+        moodList.push(songObj);
+      }
+    })
 
+     const songChoice = getRandom(moodList);
+     //songChoice is a selected song object
+     console.log(songChoice, "songChoice");
+     centerDisplay(songChoice);
+  })
+  .catch(error => alert(`error with get song fetch --> ${error}`)) 
+}
 
-// function getRandom(list){
-//   const randomNumber = Math.floor(Math.random() * list.length);
-//   return list[randomNumber];
-// }
-
-
-//  //this function renders an object to the target div,
-//  //assuming target div is a string     
-//  function renderSong(object, targetDiv){
-//    const selectedDiv = getElementById(targetDiv);
+function getRandom(list){
+  const randomNumber = Math.floor(Math.random() * list.length);
+  return list[randomNumber];
+}
 
 
-
-//  //this function renders an object to the target div,
-//  //assuming target div is a string  
+ //this function renders an object to the target div,
+ //assuming target div is a string  
  
- 
-//  function renderSong(object, targetDiv){
-//    const selectedDiv = document.getElementById(targetDiv);
-//    const button = document.createElement("button");
-//    const stockImage = document.createElement("img");
-//    const image = document.createElement('div');
-//    const text = document.createElement("div");
-//    const title = document.createElement("h4");
-//    const songArtist = document.createElement("h4");
-   
-//    image.src = stockImage;
-//    const favoriteButton = document.createElement("img")
-   
-//   image.src = stockImage;
-//   button.id = "suggested-song";
-//   button.className = "song-button";
-//   stockImage.id = "stock-album-cover";
-//   text.id = "song-text";
-//   title.value = object.songTitle;
-//   songArtist.value = object.artist;
+function renderSong(object, targetDiv){
+  const selectedDiv = document.getElementById(targetDiv)
+  const button = document.createElement("button")
+  const stockImage = document.createElement("img")
+  const image = document.createElement('div')
+  const text = document.createElement("div")
+  const title = document.createElement("h4")
+  const songArtist = document.createElement("h4")
+  const favoriteButton = document.createElement("img")
 
-//   selectedDiv.appendChild(button);
-//   button.appendChild(stockImage);
-//   button.appendChild(text);
-//   text.appendChild(title);
-//   text.appendChild(songArtist);
 
-//   title.textContent = object.songTitle;
-//   songArtist.textContent = object.artist;
-//   favoriteButton.src = "./favoriteEmpty.png"
-//   favoriteButton.id = "favorite-button"
+  image.src = stockImage;
+  button.id = "suggested-song";
+  button.className = "song-button";
+  
+  stockImage.id = "stock-album-cover";
+  text.id = "song-text";
+  title.textContent = object.songTitle;
+  songArtist.textContent = object.artistName;
+  favoriteButton.src = "./favoriteEmpty.png"
+  favoriteButton.id = "favorite-button"
 
-//   selectedDiv.appendChild(button);
-//   button.appendChild(stockImage);
-//   button.appendChild(favoriteButton)
-//   button.appendChild(text);
-//   text.appendChild(title);
-//   text.appendChild(songArtist);
-//   selectedDiv.appendChild(button);
-//   button.appendChild(stockImage);
-//   button.appendChild(favoriteButton)
-//   button.appendChild(text);
-//   text.appendChild(title);
-//   text.appendChild(songArtist);
+  songArtist.value = object.artist;
 
-//   // Shows correct like image depending on state
-//   object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
-//   // Shows correct like image depending on state
-//   object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
+
+  selectedDiv.appendChild(button);
+  button.appendChild(stockImage);
+  button.appendChild(text);
+  text.appendChild(title);
+  text.appendChild(songArtist);
+  button.appendChild(favoriteButton)
+
+  // Shows correct like image depending on state
+  object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
+  // Shows correct like image depending on state
+  object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
+}
+
+// Shows The center Suggested Song
+function centerDisplay(songObj){
+ renderSong(songObj,"top-body-container")
+}
+
+  
+
 
 //   //post favorite or not favorite to songsDb
 //   favoriteButton.addEventListener("click", (e)=>{
@@ -418,30 +422,19 @@ const getWeatherMood = (weather_code) => {
   
 // }
 
-// // render test
-// const testObject ={
-//   songTitle: "sample song",
-//   artist: "Drake",
-//   image: "",
-//   url: "dddd",
-//   favorite:true
-// }
-// renderSong(testObject,"playlist-container")
-
-
-// function main(){
-//   getSong("Excited");
-
-// suggestedSong.addEventListener("click", ()=>{
-//   console.log("I'm clicked, baby!")
-// })
-
-// }
-
+// render test
+const testObject ={
+  songTitle: "sample song",
+  artistName: "Drake",
+  image: "",
+  url: "dddd",
+  favorite:true
+}
+renderSong(testObject,"playlist-container")
 
 
 function main(){
-  
+  getSong("Excited")
   addSubmitListener()
   addChangeLocationSubmitListener()
 
