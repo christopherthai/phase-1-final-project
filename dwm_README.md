@@ -4,7 +4,12 @@ Our website will give you a suggested song given the weather and your location.
 # Wireframe
 ![Wireframe](Wireframe.png)
 # User Stories
-As an user, I want a song that will match my mood for the day. I’ll hit the website, enter my location and get the weather forecast for today. I am giving a song of the day to listen to based on the weather of my location. I can favorite the song which will add it on the “Favorite” Playlist.
+1. As a 25 year old, active runner, I check the weather every day and want a song that matches the weather.
+
+2. As an 18 year-old college student, I want a song that will match my mood for the day. 
+
+3. As a career woman in my 20’s, I want a song that I can listen to on my commute into work that fits the weather,
+
 # Example of db.json
 ![Trello Board](db-son.png)
 # API
