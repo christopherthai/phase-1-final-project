@@ -348,6 +348,7 @@ function getRandom(list){
   return list[randomNumber];
 }
 function playMusic(e,data){
+  e.preventDefault()
   window.open( `${data.url.youtube} , 'blank'`)
 }
 
@@ -357,19 +358,19 @@ function renderSong(object, targetDiv){
 
   const selectedDiv = document.getElementById(targetDiv)
   const button = document.createElement("button")
-  const stockImage = document.createElement("img")
-  const image = document.createElement('div')
+
+  const playButton = document.createElement('div')
   const text = document.createElement("div")
   const title = document.createElement("h4")
   const songArtist = document.createElement("h4")
   const favoriteButton = document.createElement("img")
 
 
-  image.src = stockImage;
+  
   button.id = "suggested-song";
   button.className = "song-button";
   
-  stockImage.id = "stock-album-cover";
+  playButton.id = "stock-album-cover";
   text.id = "song-text";
   title.textContent = object.songTitle;
   songArtist.textContent = object.artist;
@@ -378,9 +379,8 @@ function renderSong(object, targetDiv){
 
   songArtist.value = object.artist;
 
-
   selectedDiv.appendChild(button);
-  button.appendChild(stockImage);
+  button.appendChild(playButton);
   button.appendChild(text);
   text.appendChild(title);
   text.appendChild(songArtist);
@@ -391,12 +391,13 @@ function renderSong(object, targetDiv){
   object.favorite === true ? favoriteButton.src ="./favoriteFilled.png" : favoriteButton.src = "./favoriteEmpty.png"
   // On click send to youtube
   selectedDiv.addEventListener("click", (e) => playMusic(e,object))
-  stockImage.addEventListener("click",(e) => postFavorite(e,object) )
+  favoriteButton.addEventListener("click",(e) => postFavorite(e,object) )
 
 }
 
 //post favorite or Not to songsDb
 function postFavorite(e,object){
+    e.preventDefault()
     fetch(`http://localhost:3000/songs/${object.id}`,{
         method:"PATCH",
         header:{
@@ -416,7 +417,7 @@ function postFavorite(e,object){
 }
   
 const renderLikedSongsPlaylist = () => {
-
+  
   const selectedDiv = document.querySelector("#playlist-container")
   
   fetch("http://localhost:3000/songs")
