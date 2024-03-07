@@ -316,10 +316,10 @@ const getSong = (mood) => {
     }
     
   })
-  .then(song_data => {
-    // moodList is a list of objects --> Title,Name,Image,Url
+  .then(song => {
+    // moodList is a list of songs --> Title,Name,Image,Url
     const moodList = [];
-    song_data.map(data => {
+    song.map(data => {
       // console.log(data.mood[0]);
       if(data.mood[0] === mood){
 
@@ -336,7 +336,7 @@ const getSong = (mood) => {
     })
 
      const songChoice = getRandom(moodList);
-     //songChoice is a selected song object
+     //songChoice is a selected song song
      console.log(songChoice, "songChoice");
      centerDisplay(songChoice);
   })
@@ -353,10 +353,16 @@ function playMusic(e,data){
   console.log("Playbutton clicked")
   window.open( `${data.url} , 'blank'`)
 }
+function playMusicPlaylist(e,data){
+  e.preventDefault()
+  e.stopPropagation()
+  console.log("Playbutton clicked")
+  window.open( `${data.url.youtube} , 'blank'`)
+}
 
-//this function renders an object to the target div #ID,
+//this function renders an song to the target div #ID,
 //assuming target div is a string  
-function renderSong(object, targetDiv){
+function renderSong(song, targetDiv){
 
   const selectedDiv = document.getElementById(targetDiv)
   const button = document.createElement("button")
@@ -377,12 +383,12 @@ function renderSong(object, targetDiv){
   playButtonIcon.src= "./blackYtLogo.png"
   playButtonIcon.id = "yt-logo"
   text.id = "song-text";
-  title.textContent = object.songTitle;
-  songArtist.textContent = object.artist;
+  title.textContent = song.songTitle;
+  songArtist.textContent = song.artist;
   favoriteButton.src = ""
   favoriteButton.id = "favorite-button"
 
-  songArtist.value = object.artist;
+  songArtist.value = song.artist;
 
   selectedDiv.appendChild(button);
   button.appendChild(playButton);
@@ -392,24 +398,24 @@ function renderSong(object, targetDiv){
   text.appendChild(songArtist);
   button.appendChild(favoriteButton)
 
-  console.log(object,"<----this is the renderSong Obj")
+  console.log(song,"<----this is the renderSong Obj")
   // Shows correct like image depending on state
-  object.favorite === true ? favoriteButton.src ="./favoriteFilled.png" : favoriteButton.src = "./favoriteEmpty.png"
+  song.favorite === true ? favoriteButton.src ="./favoriteFilled.png" : favoriteButton.src = "./favoriteEmpty.png"
   // On click send to youtube
-  playButton.addEventListener("click", (e) => playMusic(e,object))
-  favoriteButton.addEventListener("click",(e) => postFavorite(e,object) )
+  playButton.addEventListener("click", (e) => playMusic(e,song))
+  favoriteButton.addEventListener("click",(e) => postFavorite(e,song) )
 
 }
 
 //post favorite or Not to songsDb
-function postFavorite(e,object){
+function postFavorite(e,song){
     e.preventDefault()
-    fetch(`http://localhost:3000/songs/${object.id}`,{
+    fetch(`http://localhost:3000/songs/${song.id}`,{
         method:"PATCH",
         header:{
           "content-Type":"application/json"
         },
-          body:JSON.stringify({"favorite":!object.favorite})
+          body:JSON.stringify({"favorite":!song.favorite})
     })
     .then(response => {
       if(response.ok) {
@@ -438,11 +444,54 @@ const renderLikedSongsPlaylist = () => {
     }
     
   })
-  .then(song_data => {
-    console.log(song_data)
-    song_data.forEach(song => {
+  .then(song => {
+    song.forEach(song => {
       if(song.favorite === true) {
-        renderSong(song, "playlist-container") 
+        
+        console.log(song, "This is the song")
+  
+        
+        const selectedDiv = document.getElementById("playlist-container")
+      const button = document.createElement("button")
+
+      const playButton = document.createElement('div')
+      const playButtonIcon = document.createElement("img")
+      const text = document.createElement("div")
+      const title = document.createElement("h4")
+      const songArtist = document.createElement("h4")
+      const favoriteButton = document.createElement("img")
+
+
+
+      button.id = "suggested-song";
+      button.className = "song-button";
+
+      playButton.id = "stock-album-cover";
+      playButtonIcon.src= "./blackYtLogo.png"
+      playButtonIcon.id = "yt-logo"
+      text.id = "song-text";
+      title.textContent = song.songTitle;
+      songArtist.textContent = song.artist;
+      favoriteButton.src = ""
+      favoriteButton.id = "favorite-button"
+
+      songArtist.value = song.artist;
+
+      selectedDiv.appendChild(button);
+      button.appendChild(playButton);
+      playButton.appendChild(playButtonIcon)
+      button.appendChild(text);
+      text.appendChild(title);
+      text.appendChild(songArtist);
+      button.appendChild(favoriteButton)
+
+      console.log(song,"<----this is the renderSong Obj")
+      // Shows correct like image depending on state
+      song.favorite === true ? favoriteButton.src ="./favoriteFilled.png" : favoriteButton.src = "./favoriteEmpty.png"
+      // On click send to youtube
+      playButton.addEventListener("click", (e) => playMusicPlaylist(e,song))
+      favoriteButton.addEventListener("click",(e) => postFavorite(e,song) )
+
       }
 
     })
@@ -452,6 +501,7 @@ const renderLikedSongsPlaylist = () => {
 // Shows The center Suggested Song
 function centerDisplay(songObj){
  renderSong(songObj,"top-body-container")
+ 
 }
 
 function main(){
