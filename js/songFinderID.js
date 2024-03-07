@@ -30,34 +30,56 @@
         .catch(error => console.error('Error fetching songs:', error));
 
     function findSongById(songId) {
-        // Find the song with the inputted ID
         let song = songs.find(song => song.id === songId);
-
-        // Get the container to display the song title
         let displayedSongContainer = document.getElementById('filtered-songs-container');
 
-        // Display the song title or a "No results found" message
         if (song) {
-            displayedSongContainer.textContent = `Song: ${song.title}`;
+            let ol = document.createElement('ol');
+            let li = document.createElement('li');
+            let h3 = document.createElement('h3');
+            h3.textContent = song.title;
+            li.appendChild(h3);
+
+            let iframe = document.createElement('iframe');
+            iframe.src = `https://open.spotify.com/embed/track/${song.links.spotify.split('track/')[1]}`;
+            iframe.width = '300';
+            iframe.height = '380';
+            iframe.frameBorder = '0';
+            iframe.allowtransparency = 'true';
+            iframe.allow = 'encrypted-media';
+            li.appendChild(iframe);
+
+            ol.appendChild(li);
+            displayedSongContainer.appendChild(ol);
         } else {
             displayedSongContainer.textContent = 'No results found';
         }
     }
 
     function findSongByLyrics(lyricsWords) {
-        // Filter the songs to only include those where the lyrics contain the lyrics words
         let matchingSongs = songs.filter(song => song.lyrics.toLowerCase().includes(lyricsWords.toLowerCase()));
-
-        // Get the container to display the song titles
         let displayedSongContainer = document.getElementById('filtered-songs-container');
 
-        // Display the song titles or a "No results found" message
         if (matchingSongs.length > 0) {
+            let ol = document.createElement('ol');
             matchingSongs.forEach(song => {
-                let songElement = document.createElement('p');
-                songElement.textContent = `Song: ${song.title}`;
-                displayedSongContainer.appendChild(songElement);
+                let li = document.createElement('li');
+                let h3 = document.createElement('h3');
+                h3.textContent = song.title;
+                li.appendChild(h3);
+
+                let iframe = document.createElement('iframe');
+                iframe.src = `https://open.spotify.com/embed/track/${song.links.spotify.split('track/')[1]}`;
+                iframe.width = '300';
+                iframe.height = '380';
+                iframe.frameBorder = '0';
+                iframe.allowtransparency = 'true';
+                iframe.allow = 'encrypted-media';
+                li.appendChild(iframe);
+
+                ol.appendChild(li);
             });
+            displayedSongContainer.appendChild(ol);
         } else {
             displayedSongContainer.textContent = 'No results found';
         }

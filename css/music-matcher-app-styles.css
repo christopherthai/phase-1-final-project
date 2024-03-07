@@ -24,4 +24,27 @@ body {
     color: var(--text-color);
 }
 
+
+#song-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+.song-title {
+    width: 100%;
+    max-width: 500px;
+    text-align: left;
+}
+
+.spotify-player {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#filtered-songs-container ol {
+    list-style-position: inside;
+    padding-left: 0;
+}
 /* Add your other styles here, using the CSS variables */
