@@ -60,6 +60,8 @@ nav{
     padding: 3vh 5px;
     position:sticky;
     top:0px;
+    z-index: 10;
+    max-width: 150vw;
 }
 .navigation-bar{
 
@@ -96,13 +98,15 @@ nav{
     padding: 2px 8px;
 }
 #location-input{
+    margin-top: 20%;
     margin-bottom: 30%;
     width: 80%;
+    max-width: 1200px;
     display:flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    border:solid 1px red;
+    border:solid 1px green;
     
 }
 #location-input h4{
@@ -111,7 +115,7 @@ nav{
     text-align:center;
 }
 #input-div{
-    display: none;
+    /* display: none; */
 }
 #location-name{
     width:90%;
@@ -152,24 +156,28 @@ header{
   height: 50vh;
   border:solid 2px black;
   margin:0 0 5% 0 ;
-    display:flex;
-    justify-content: center;
-    align-items:center;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  /* flex-direction: column-reverse; */
 
-
-    height: 100vh;
-    border:solid 2px black;
-    margin:0 0 5% 0 ;
+  height: 100vh;
+  border:solid 2px black;
+  margin:0 0 5% 0 ;
 }
 /* weather Display Container */
 .weather-display{
     width:90%;
     position:absolute;
-    top:20%;
+    top: -17%;
+    border: blue 2px solid;
+    display: flex;
+    justify-content: center;
 }
 /* Weather animation Icon */
-.weather-image{
+.weather-image, .weather-image-two, .weather-image-three {
     width: 35%;
+    border: #FF5555 2px solid;
 }
 /* body stuff */
 section{
@@ -195,8 +203,8 @@ section{
   position:absolute;
   top: 70%;
   left:0;
-  width: 150px;
-  height: 50px;
+  width: 10%;
+  height: 55px;
   background-color: var(--primary-color);
   border-radius: 4px;
 }

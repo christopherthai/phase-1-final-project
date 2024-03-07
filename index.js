@@ -4,6 +4,7 @@ let state
 
 // Nav Bar Screen Pops Up halway through page
 const navBar = document.querySelector("nav")
+const inputDiv = document.querySelector("#input-div")
 navBar.style.display = "none"
 
 window.addEventListener("scroll", () =>{
@@ -23,7 +24,7 @@ const addSubmitListener = () => {
 
   const locationForm = document.querySelector('#location-input')
   const weatherDisplay = document.querySelector(".weather-display")
-  const city_state = document.querySelector("#city-state")
+  const city_state = document.querySelector("#city-state h5")
   const display_location = document.querySelector(".display-location")
 
   locationForm.addEventListener('submit', (event) => {
@@ -43,6 +44,9 @@ const addSubmitListener = () => {
     getCoordinates(parseLocationInput[0], parseLocationInput[1], parseLocationInput[2])
 
     event.target.reset();
+
+    // Header Transition
+    inputDiv.style.display = "none"
 
   })
 
@@ -145,8 +149,12 @@ const getWeatherCode = (latitude, longitude) => {
 const displayWeatherCondition = (weather_code) => {
 
   const weatherDisplay = document.querySelector(".weather-display")
+  const weatherMessage = document.querySelector('#start-screen-text')
+  
   let weatherImage = document.createElement("img")
-  let weatherMessage = document.createElement('h1')
+  let weatherImageTwo = document.createElement("img")
+  let weatherImageThree = document.createElement("img")
+  
   let weatherCondition
   
 
@@ -232,12 +240,18 @@ const displayWeatherCondition = (weather_code) => {
 
   } 
 
+  weatherImageTwo.src = weatherImage.src
+  weatherImageThree.src = weatherImage.src
 
   weatherImage.className = "weather-image"
+  weatherImageTwo.className = "weather-image-two"
+  weatherImageThree.className = "weather-image-three"
+
   weatherMessage.textContent = `It look like it is ${weatherCondition} in ${city}!`
 
   weatherDisplay.append(weatherImage)
-  weatherDisplay.append(weatherMessage)
+  weatherDisplay.append(weatherImageTwo)
+  weatherDisplay.append(weatherImageThree)
 
 }
 
