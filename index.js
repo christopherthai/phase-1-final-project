@@ -349,7 +349,7 @@ function getRandom(list){
 }
 function playMusic(e,data){
   e.preventDefault()
-  window.open( `${data.url.youtube} , 'blank'`)
+  window.open( `${data.url} , 'blank'`)
 }
 
 //this function renders an object to the target div #ID,
