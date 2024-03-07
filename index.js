@@ -349,6 +349,8 @@ function getRandom(list){
 }
 function playMusic(e,data){
   e.preventDefault()
+  e.stopPropagation()
+  console.log("Playbutton clicked")
   window.open( `${data.url} , 'blank'`)
 }
 
@@ -360,6 +362,7 @@ function renderSong(object, targetDiv){
   const button = document.createElement("button")
 
   const playButton = document.createElement('div')
+  const playButtonIcon = document.createElement("img")
   const text = document.createElement("div")
   const title = document.createElement("h4")
   const songArtist = document.createElement("h4")
@@ -371,6 +374,8 @@ function renderSong(object, targetDiv){
   button.className = "song-button";
   
   playButton.id = "stock-album-cover";
+  playButtonIcon.src= "./blackYtLogo.png"
+  playButtonIcon.id = "yt-logo"
   text.id = "song-text";
   title.textContent = object.songTitle;
   songArtist.textContent = object.artist;
@@ -381,6 +386,7 @@ function renderSong(object, targetDiv){
 
   selectedDiv.appendChild(button);
   button.appendChild(playButton);
+  playButton.appendChild(playButtonIcon)
   button.appendChild(text);
   text.appendChild(title);
   text.appendChild(songArtist);
@@ -390,7 +396,7 @@ function renderSong(object, targetDiv){
   // Shows correct like image depending on state
   object.favorite === true ? favoriteButton.src ="./favoriteFilled.png" : favoriteButton.src = "./favoriteEmpty.png"
   // On click send to youtube
-  selectedDiv.addEventListener("click", (e) => playMusic(e,object))
+  playButton.addEventListener("click", (e) => playMusic(e,object))
   favoriteButton.addEventListener("click",(e) => postFavorite(e,object) )
 
 }
@@ -440,8 +446,6 @@ const renderLikedSongsPlaylist = () => {
       }
 
     })
-
-
   })
 }
 
@@ -456,7 +460,5 @@ function main(){
   addChangeLocationSubmitListener()
   renderLikedSongsPlaylist()
   
-
 }
-
 main();

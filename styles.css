@@ -242,12 +242,18 @@ section{
 }
 
 #stock-album-cover{
-  
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
   background-color: var(--primary-color);
   border-radius: 50%;
   width: 70px;
   height: 70px;
   margin: 0 5% 0 2%;
+}
+#yt-logo{
+  width:75%;
 }
 #song-text{
   margin:0;
