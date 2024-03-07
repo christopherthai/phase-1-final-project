@@ -185,7 +185,6 @@ section{
   margin: 0 5% 0 0;
 }
 #top-body-container{
-  border:solid 2px red;
   width: 70%;
   margin: 0 auto;
   display: flex;
@@ -203,18 +202,18 @@ section{
   position:absolute;
   top: 70%;
   left:0;
-  width: 15%;
+  width: 25%;
   height: 55px;
   background-color: var(--primary-color);
   border-radius: 4px;
 }
 #city-state h5{
-  margin: 5% 0 0 0;
+  margin: 7% 0 0 5px;
 
   display:flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
+  justify-content: flex-start;
+  font-size: 1.25rem;
   font-weight: 400;
 }
 

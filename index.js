@@ -172,7 +172,6 @@ const displayWeatherCondition = (weather_code) => {
   let weatherCondition
   
 
-
   if(weather_code === 0) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/clear-day.svg"
@@ -269,7 +268,7 @@ const displayWeatherCondition = (weather_code) => {
   weatherDisplay.append(weatherImageThree)
 
 }
-
+// Moods Moods: Somber, Excited, Content, Calming , Hopeful , Nostalgic
 // Get the mood base on the weather code
 const getWeatherMood = (weather_code) => {
 
@@ -301,7 +300,7 @@ const getWeatherMood = (weather_code) => {
   
   }
 
-  // getSong(mood)
+  getSong(mood)
 
 }
 
@@ -326,7 +325,7 @@ const getSong = (mood) => {
 
         const songObj = {
           songTitle: data.songTitle,
-          artistName: data.artist,
+          artist: data.artist,
           image: data.image,
           url: data.url.youtube,
           favorite:data.favorite,
@@ -349,10 +348,10 @@ function getRandom(list){
   return list[randomNumber];
 }
 function playMusic(e,data){
-  window.open( `${data.url} , 'blank'`)
+  window.open( `${data.url.youtube} , 'blank'`)
 }
 
-//this function renders an object to the target div,
+//this function renders an object to the target div #ID,
 //assuming target div is a string  
 function renderSong(object, targetDiv){
 
@@ -373,8 +372,8 @@ function renderSong(object, targetDiv){
   stockImage.id = "stock-album-cover";
   text.id = "song-text";
   title.textContent = object.songTitle;
-  songArtist.textContent = object.artistName;
-  favoriteButton.src = "./favoriteEmpty.png"
+  songArtist.textContent = object.artist;
+  favoriteButton.src = ""
   favoriteButton.id = "favorite-button"
 
   songArtist.value = object.artist;
@@ -387,17 +386,17 @@ function renderSong(object, targetDiv){
   text.appendChild(songArtist);
   button.appendChild(favoriteButton)
 
+  console.log(object,"<----this is the renderSong Obj")
   // Shows correct like image depending on state
-  object.favorite === true ? favoriteButton.src ="./favoriteFilled.png": favoriteButton.src = "./favoriteEmpty.png"
+  object.favorite === true ? favoriteButton.src ="./favoriteFilled.png" : favoriteButton.src = "./favoriteEmpty.png"
   // On click send to youtube
   selectedDiv.addEventListener("click", (e) => playMusic(e,object))
-  favoriteButton.addEventListener("click",(e) => postFavorite(e,object) )
+  stockImage.addEventListener("click",(e) => postFavorite(e,object) )
 
 }
 
-//post favorite or not favorite to songsDb
+//post favorite or Not to songsDb
 function postFavorite(e,object){
-    console.log(object, "this is postFavorite object.id")
     fetch(`http://localhost:3000/songs/${object.id}`,{
         method:"PATCH",
         header:{
@@ -407,7 +406,6 @@ function postFavorite(e,object){
     })
     .then(response => {
       if(response.ok) {
-          console.log(response.json())
       }
       else {
         alert("Something went wrong with favorite button")
@@ -417,40 +415,47 @@ function postFavorite(e,object){
   
 }
   
+const renderLikedSongsPlaylist = () => {
+
+  const selectedDiv = document.querySelector("#playlist-container")
+  
+  fetch("http://localhost:3000/songs")
+  .then(response => {
+    
+    // if response have a succcessful status code
+    if(response.ok) {
+      console.log(response, 'response')
+      return response.json() // gets returned to the next .then
+    } else {
+      alert("Something went wrong")
+    }
+    
+  })
+  .then(song_data => {
+    console.log(song_data)
+    song_data.forEach(song => {
+      if(song.favorite === true) {
+        renderSong(song, "playlist-container") 
+      }
+
+    })
 
 
-
+  })
+}
 
 // Shows The center Suggested Song
 function centerDisplay(songObj){
  renderSong(songObj,"top-body-container")
 }
 
-
-// render test
-const testObject ={
-  songTitle: "sample song",
-  artistName: "Drake",
-  image: "",
-  url: "dddd",
-  favorite:true
-}
-renderSong(testObject,"playlist-container")
-
-
 function main(){
-  getSong("Excited")
+  
   addSubmitListener()
   addChangeLocationSubmitListener()
+  renderLikedSongsPlaylist()
+  
 
 }
 
 main();
-
-// Moods Moods: Somber, Excited, Content, Calming , Hopeful , Nostalgic
-
-
-//***Body JS and U.I***
-//To-Do's:
-
-// 3. Like Icon: on click, add song to "Liked Songs Playlist"
