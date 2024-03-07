@@ -401,7 +401,66 @@ function centerDisplay(songObj){
  renderSong(songObj,"top-body-container")
 }
 
+
+
+const renderLikedSongsPlaylist = () => {
+
+  const selectedDiv = document.querySelector("#playlist-container")
   
+  fetch("http://localhost:3000/songs")
+  .then(response => {
+    
+    // if response have a succcessful status code
+    if(response.ok) {
+      return response.json() // gets returned to the next .then
+    } else {
+      alert("Something went wrong")
+    }
+    
+  })
+  .then(song_data => {
+    
+    song_data.forEach(song => {
+      
+      if(song.favorite === true) {
+
+        const button = document.createElement("button")
+        const stockImage = document.createElement("img")
+        const image = document.createElement('div')
+        const text = document.createElement("div")
+        const title = document.createElement("h4")
+        const songArtist = document.createElement("h4")
+        const favoriteButton = document.createElement("img")
+
+
+        image.src = stockImage;
+        button.id = "suggested-song";
+        button.className = "song-button";
+  
+        stockImage.id = "stock-album-cover";
+        text.id = "song-text";
+        title.textContent = song.songTitle;
+        songArtist.textContent = song.artistName;
+        favoriteButton.src = "./favoriteEmpty.png"
+        favoriteButton.id = "favorite-button"
+
+        songArtist.value = song.artist;
+
+
+        selectedDiv.appendChild(button);
+        button.appendChild(stockImage);
+        button.appendChild(text);
+        text.appendChild(title);
+        text.appendChild(songArtist);
+        button.appendChild(favoriteButton)
+        
+      }
+
+    })
+
+
+  })
+}
 
 
 //   //post favorite or not favorite to songsDb
@@ -443,6 +502,7 @@ function main(){
   getSong("Excited")
   addSubmitListener()
   addChangeLocationSubmitListener()
+  renderLikedSongsPlaylist()
 
 }
 
@@ -454,5 +514,4 @@ main();
 //   Ben and Dalton 
 //***Body JS and U.I***
 //To-Do's:
-// 2. Connect "Recommended Song" Button to YouTube URL on click
 // 3. Like Icon: on click, add song to "Liked Songs Playlist"
