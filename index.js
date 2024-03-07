@@ -2,6 +2,22 @@
 let city
 let state
 
+// Nav Bar Screen Pops Up halway through page
+const navBar = document.querySelector("nav")
+navBar.style.display = "none"
+
+window.addEventListener("scroll", () =>{
+  
+  if (window.scrollY > 500){
+    navBar.style.display = "block"
+    console.log(window.scrollY)
+  }else if(window.scrollY < 500){
+    navBar.style.display ="none"
+  }
+   
+})
+  
+
 // Get the inputs of the location from the user
 const addSubmitListener = () => {
 
