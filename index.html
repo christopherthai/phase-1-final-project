@@ -1,57 +1,70 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>WeatherMood Music App</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="dwm.css" />
+    <script defer type="module" src="index.js"></script>
+    <script defer type="module" src="./dwm.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <title>WeatherMood Music App</title>
-  <link rel="stylesheet" type="text/css" href="styles.css" />
-  <link rel="stylesheet" type="text/css" href="dwm.css" />
-  <script defer type="module" src="index.js"></script>
-  <script defer type="module" src="./dwm.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
-  <nav>
-    <!--Chris and Dainis -->
-    <div class="navigation-bar"> 
-      <img id="logo" src="./weather-mood-logo.png"/>
-      <a class="display-location">City, State</a>
-      <form id="change-location">
-        <input type="text" name="search" id="search-location" placeholder="Change Your Location">
-        <input type="submit" id='nav-submit-button' value="Submit" />
+  <body>
+    <nav>
+      <!--Chris and Dainis -->
+      <div class="navigation-bar">
+        <img id="logo" src="./weather-mood-logo.png" />
+        <a class="display-location">City, State</a>
+        <form id="change-location">
+          <input
+            type="text"
+            name="search"
+            id="search-location"
+            placeholder="Change Your Location"
+          />
+          <input type="submit" id="nav-submit-button" value="Submit" />
+        </form>
+      </div>
+    </nav>
+    <header>
+      <div class="weather-display"></div>
+      <form id="location-input">
+        <div
+          class="dwm_logo"
+          style="display: flex; flex-direction: column; align-items: center"
+        >
+          <img
+            src="./weather-mood-logo.png"
+            alt="Weather Mood Logo"
+            style="width: 277px; height: 277px; margin: 0 auto"
+          />
+        </div>
+        <h4 id="start-screen-text">Enter Your City, State, Country</h4>
+        <div id="input-div">
+          <input
+            type="text"
+            name="location"
+            id="location-name"
+            placeholder="Miami, Florida, United States"
+          />
+          <input type="submit" id="submit-button" value="Submit" />
+        </div>
       </form>
-    </div>
+    </header>
 
-  </nav>
-  <header>
+    <section>
+      <!-- Tune Of The Day Section -->
+      <div id="top-body-container">
+        <h1>Here is a Popluar Tune to match todays Vibe!</h1>
+        <div id="city-state"><h5>City, State</h5></div>
 
-    <div class="weather-display"> 
-      
-    </div>
-    <form id="location-input">
-      <div class="dwm_logo" style="display: flex; flex-direction: column; align-items: center;">
-        <img src="./weather-mood-logo.png" alt="Weather Mood Logo" style="width: 277px; height: 277px; margin: 0 auto;">
-      </div>
-      <h4 id="start-screen-text">Enter Your City, State, Country</h4>
-      <div id="input-div">
-        <input type="text" name="location" id="location-name" placeholder="Miami, Florida, United States"/>
-        <input type="submit" id='submit-button' value="Submit"  />
-      </div>
-    </form>
-  </header>
-
-
-  <section>
-    <!-- Tune Of The Day Section -->
-    <div id="top-body-container">
-      <h1>Here is a Popluar Tune to match todays Vibe!</h1>
-      <div id="city-state"><h5>City, State</h5></div>
-
-      <!-- <button id="suggested-song" class="song-button">
+        <!-- <button id="suggested-song" class="song-button">
         <div id="stock-album-cover"></div>
         <div id="song-text">
           <h4>Song-Title</h4>
@@ -59,16 +72,14 @@
         </div>
         <img id="favorite-button" src="./favoriteEmpty.png"/>
       </button> -->
-    </div>
-  </section>
+      </div>
+    </section>
 
-
-  <!--Playlist Section -->
-  <section >
-    <div id="playlist-container">
-      <h1>Liked Songs Playlist</h1>
-    </div>
-  </section>
-</body>
-
+    <!--Playlist Section -->
+    <section>
+      <div id="playlist-container">
+        <h1>Liked Songs Playlist</h1>
+      </div>
+    </section>
+  </body>
 </html>

@@ -7,28 +7,29 @@ const navBar = document.querySelector("nav")
 const inputDiv = document.querySelector("#input-div")
 navBar.style.display = "none"
 
-window.addEventListener("scroll", () =>{
-  
-  if (window.scrollY > 500){
+window.addEventListener("scroll", () => {
+
+  if (window.scrollY > 500) {
     navBar.style.display = "block"
-  }else if(window.scrollY < 500){
-    navBar.style.display ="none"
+  } else if (window.scrollY < 500) {
+    navBar.style.display = "none"
   }
-   
+
 })
 
 //Miami, Florida, United States
 //Page Scroll from header to body
 function pageScroll() {
   setTimeout(() => {
-  document.getElementById("top-body-container").scrollIntoView({
-     behavior: "smooth", block: "end", inline: "nearest" });
+    document.getElementById("top-body-container").scrollIntoView({
+      behavior: "smooth", block: "end", inline: "nearest"
+    });
 
-  },7000
+  }, 7000
   )
 }
-  
-  
+
+
 
 
 // Get the inputs of the location from the user
@@ -40,7 +41,7 @@ const addSubmitListener = () => {
   const display_location = document.querySelector(".display-location")
 
   locationForm.addEventListener('submit', (event) => {
-    
+
     event.preventDefault()
     weatherDisplay.innerHTML = ""
 
@@ -75,7 +76,7 @@ const addChangeLocationSubmitListener = () => {
   const display_location = document.querySelector(".display-location")
 
   changeLocationForm.addEventListener('submit', (event) => {
-    
+
     event.preventDefault()
     weatherDisplay.innerHTML = ""
 
@@ -99,64 +100,64 @@ const addChangeLocationSubmitListener = () => {
 
 // Get the latitude and longitude coordinates from the Weather API
 const getCoordinates = (city, state, country) => {
-  
-    let cityName = city.split(' ').join('+') 
+
+  let cityName = city.split(' ').join('+')
 
   fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=10&language=en`)
-  .then(response => {
-    
-    // if response have a succcessful status code
-    if(response.ok) {
-      return response.json() // gets returned to the next .then
-    } else {
-      alert("Something went wrong")
-    }
-    
-  })
-  .then(geocoding_data => {
+    .then(response => {
+
+      // if response have a succcessful status code
+      if (response.ok) {
+        return response.json() // gets returned to the next .then
+      } else {
+        alert("Something went wrong")
+      }
+
+    })
+    .then(geocoding_data => {
 
       geocoding_data.results.forEach(data => {
-      
-      // Get the latitude and longitude of the location is in the United States
-      if ((data.name === city) && (data.admin1 === state)){
 
-        getWeatherCode(data.latitude, data.longitude)
+        // Get the latitude and longitude of the location is in the United States
+        if ((data.name === city) && (data.admin1 === state)) {
 
-      // Get the latitude and longitude of the location outside of the United States
-      } else if ((data.name === city) && (data.country === country) && (data.country_code !== "US")){
+          getWeatherCode(data.latitude, data.longitude)
 
-        getWeatherCode(data.latitude, data.longitude)
+          // Get the latitude and longitude of the location outside of the United States
+        } else if ((data.name === city) && (data.country === country) && (data.country_code !== "US")) {
 
-      }
-      
+          getWeatherCode(data.latitude, data.longitude)
+
+        }
+
       })
-  })
-  .catch(error => alert("Make sure to have a comma and space after city and state")) 
+    })
+    .catch(error => alert("Make sure to have a comma and space after city and state"))
 }
 
 
 // Get weather code base on the latitude and longitude from the weather api
 const getWeatherCode = (latitude, longitude) => {
-  
+
   fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=weather_code&temperature_unit=fahrenheit&forecast_days=1`)
-  .then(response => {
-    
-    // if response have a succcessful status code
-    if(response.ok) {
-      return response.json() // gets returned to the next .then
-    } else {
-      alert("Something went wrong")
-    }
-    
-  })
-  .then(weather_data => {
+    .then(response => {
 
-    displayWeatherCondition(weather_data.current.weather_code)
-    getWeatherMood(weather_data.current.weather_code)
+      // if response have a succcessful status code
+      if (response.ok) {
+        return response.json() // gets returned to the next .then
+      } else {
+        alert("Something went wrong")
+      }
+
+    })
+    .then(weather_data => {
+
+      displayWeatherCondition(weather_data.current.weather_code)
+      getWeatherMood(weather_data.current.weather_code)
 
     }
-  )
-  .catch(error => alert(error)) 
+    )
+    .catch(error => alert(error))
 }
 
 // Display the weather condition base on the weather code on the webpage
@@ -164,95 +165,95 @@ const displayWeatherCondition = (weather_code) => {
 
   const weatherDisplay = document.querySelector(".weather-display")
   const weatherMessage = document.querySelector('#start-screen-text')
-  
+
   let weatherImage = document.createElement("img")
   let weatherImageTwo = document.createElement("img")
   let weatherImageThree = document.createElement("img")
-  
-  let weatherCondition
-  
 
-  if(weather_code === 0) {
+  let weatherCondition
+
+
+  if (weather_code === 0) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/clear-day.svg"
     weatherCondition = "Sunny"
 
-  } else if((weather_code >= 1) && (weather_code <= 3)) {
+  } else if ((weather_code >= 1) && (weather_code <= 3)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/partly-cloudy-day.svg"
     weatherCondition = "Partly Cloudy"
 
-  } else if(weather_code === 4) {
+  } else if (weather_code === 4) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/smoke.svg"
     weatherCondition = "Smoke"
-    
-  } else if(weather_code === 5) {
+
+  } else if (weather_code === 5) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/haze.svg"
     weatherCondition = "Haze"
-    
-  } else if((weather_code >= 6) && (weather_code <= 9)) {
+
+  } else if ((weather_code >= 6) && (weather_code <= 9)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/dust-wind.svg"
     weatherCondition = "Dust Wind"
-    
-  } else if((weather_code >= 10) && (weather_code <= 11)) {
+
+  } else if ((weather_code >= 10) && (weather_code <= 11)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/mist.svg"
     weatherCondition = "Mist"
-    
-  } else if((weather_code >= 12) && (weather_code <= 13)) {
+
+  } else if ((weather_code >= 12) && (weather_code <= 13)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/partly-cloudy-day.svg"
     weatherCondition = "Partly Cloudy"
-    
-  } else if((weather_code >= 14) && (weather_code <= 16)) {
+
+  } else if ((weather_code >= 14) && (weather_code <= 16)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/partly-cloudy-rain.svg"
     weatherCondition = "Partly Cloudy Rain"
 
-  } else if(weather_code === 17) {
+  } else if (weather_code === 17) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/thunderstorms.svg"
     weatherCondition = "Thunderstorms"
 
-  } else if((weather_code >= 18) && (weather_code <= 19)) {
+  } else if ((weather_code >= 18) && (weather_code <= 19)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/overcast.svg"
     weatherCondition = "Overcast"
 
-  } else if(((weather_code >= 20) && (weather_code <= 29)) || (((weather_code >= 60) && (weather_code <= 69))) || ((weather_code >= 78) && (weather_code <= 94))) {
+  } else if (((weather_code >= 20) && (weather_code <= 29)) || (((weather_code >= 60) && (weather_code <= 69))) || ((weather_code >= 78) && (weather_code <= 94))) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/rain.svg"
     weatherCondition = "Rain"
 
-  } else if((weather_code >= 30) && (weather_code <= 39)) {
+  } else if ((weather_code >= 30) && (weather_code <= 39)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/dust-wind.svg"
     weatherCondition = "Dust Wind"
 
-  } else if((weather_code >= 40) && (weather_code <= 49)) {
+  } else if ((weather_code >= 40) && (weather_code <= 49)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/fog.svg"
     weatherCondition = "Fog"
 
-  } else if((weather_code >= 50) && (weather_code <= 59)) {
+  } else if ((weather_code >= 50) && (weather_code <= 59)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/drizzle.svg"
     weatherCondition = "Dizzle"
 
-  } else if((weather_code >= 70) && (weather_code <= 77)) {
+  } else if ((weather_code >= 70) && (weather_code <= 77)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/snow.svg"
     weatherCondition = "Snow"
 
-  } else if((weather_code >= 95) && (weather_code <= 99)) {
+  } else if ((weather_code >= 95) && (weather_code <= 99)) {
 
     weatherImage.src = "./weather-icons-master/production/fill/all/thunderstorms.svg"
     weatherCondition = "Thunderstorms"
 
-  } 
+  }
 
   weatherImageTwo.src = weatherImage.src
   weatherImageThree.src = weatherImage.src
@@ -273,31 +274,31 @@ const displayWeatherCondition = (weather_code) => {
 const getWeatherMood = (weather_code) => {
 
   let mood
-  
-  if((weather_code >= 0) && (weather_code <= 3)) {
+
+  if ((weather_code >= 0) && (weather_code <= 3)) {
 
     mood = "Excited"
 
-  } else if(((weather_code >= 4) && (weather_code <= 10)) || (((weather_code >= 17) && (weather_code <= 19))) || ((weather_code >= 41) && (weather_code <= 49))) {
+  } else if (((weather_code >= 4) && (weather_code <= 10)) || (((weather_code >= 17) && (weather_code <= 19))) || ((weather_code >= 41) && (weather_code <= 49))) {
 
     mood = "Calming"
 
-  } else if(((weather_code >= 11) && (weather_code <= 16)) || (((weather_code >= 70) && (weather_code <= 77)))) {
+  } else if (((weather_code >= 11) && (weather_code <= 16)) || (((weather_code >= 70) && (weather_code <= 77)))) {
 
     mood = "Content"
- 
-  } else if(((weather_code >= 20) && (weather_code <= 29)) || (((weather_code >= 60) && (weather_code <= 69))) || ((weather_code >= 78) && (weather_code <= 94))) {
+
+  } else if (((weather_code >= 20) && (weather_code <= 29)) || (((weather_code >= 60) && (weather_code <= 69))) || ((weather_code >= 78) && (weather_code <= 94))) {
 
     mood = "Nostalgic"
- 
-  } else if(((weather_code >= 30) && (weather_code <= 39)) || (((weather_code >= 95) && (weather_code <= 99)))) {
+
+  } else if (((weather_code >= 30) && (weather_code <= 39)) || (((weather_code >= 95) && (weather_code <= 99)))) {
 
     mood = "Somber"
 
-  } else if(((weather_code >= 50) && (weather_code <= 59))) {
+  } else if (((weather_code >= 50) && (weather_code <= 59))) {
 
     mood = "Hopeful"
-  
+
   }
 
   getSong(mood)
@@ -305,64 +306,64 @@ const getWeatherMood = (weather_code) => {
 }
 
 const getSong = (mood) => {
-  
+
   fetch("http://localhost:3000/songs")
-  .then(response => {
-    if(response.ok) {
-      return response.json()
-    }
-    else {
-      alert("Something went wrong")
-    }
-    
-  })
-  .then(song => {
-    // moodList is a list of songs --> Title,Name,Image,Url
-    const moodList = [];
-    song.map(data => {
-      // console.log(data.mood[0]);
-      if(data.mood[0] === mood){
+    .then(response => {
+      if (response.ok) {
+        return response.json()
+      }
+      else {
+        alert("Something went wrong")
+      }
 
-        const songObj = {
-          songTitle: data.songTitle,
-          artist: data.artist,
-          image: data.image,
-          url: data.url.youtube,
-          favorite:data.favorite,
-          id:data.id
-      }
-        moodList.push(songObj);
-      }
     })
+    .then(song => {
+      // moodList is a list of songs --> Title,Name,Image,Url
+      const moodList = [];
+      song.map(data => {
+        // console.log(data.mood[0]);
+        if (data.mood[0] === mood) {
 
-     const songChoice = getRandom(moodList);
-     //songChoice is a selected song song
-     console.log(songChoice, "songChoice");
-     centerDisplay(songChoice);
-  })
-  .catch(error => alert(`error with get song fetch --> ${error}`)) 
+          const songObj = {
+            songTitle: data.songTitle,
+            artist: data.artist,
+            image: data.image,
+            url: data.url.youtube,
+            favorite: data.favorite,
+            id: data.id
+          }
+          moodList.push(songObj);
+        }
+      })
+
+      const songChoice = getRandom(moodList);
+      //songChoice is a selected song song
+      console.log(songChoice, "songChoice");
+      centerDisplay(songChoice);
+    })
+    .catch(error => alert(`error with get song fetch --> ${error}`))
 }
 
-function getRandom(list){
+function getRandom(list) {
   const randomNumber = Math.floor(Math.random() * list.length);
   return list[randomNumber];
 }
-function playMusic(e,data){
+function playMusic(e, data) {
   e.preventDefault()
   e.stopPropagation()
   console.log("Playbutton clicked")
-  window.open( `${data.url} , 'blank'`)
+  window.open(`${data.url} , 'blank'`)
 }
-function playMusicPlaylist(e,data){
+function playMusicPlaylist(e, data) {
   e.preventDefault()
   e.stopPropagation()
   console.log("Playbutton clicked")
-  window.open( `${data.url.youtube} , 'blank'`)
+  window.open(`${data.url.youtube} , 'blank'`)
 }
 
 //this function renders an song to the target div #ID,
 //assuming target div is a string  
-function renderSong(song, targetDiv){
+function renderSong(song, targetDiv) {
 
   const selectedDiv = document.getElementById(targetDiv)
   const button = document.createElement("button")
@@ -375,12 +376,12 @@ function renderSong(song, targetDiv){
   const favoriteButton = document.createElement("img")
 
 
-  
+
   button.id = "suggested-song";
   button.className = "song-button";
-  
+
   playButton.id = "stock-album-cover";
-  playButtonIcon.src= "./blackYtLogo.png"
+  playButtonIcon.src = "./blackYtLogo.png"
   playButtonIcon.id = "yt-logo"
   text.id = "song-text";
   title.textContent = song.songTitle;
@@ -398,117 +399,117 @@ function renderSong(song, targetDiv){
   text.appendChild(songArtist);
   button.appendChild(favoriteButton)
 
-  console.log(song,"<----this is the renderSong Obj")
+  console.log(song, "<----this is the renderSong Obj")
   // Shows correct like image depending on state
-  song.favorite === true ? favoriteButton.src ="./favoriteFilled.png" : favoriteButton.src = "./favoriteEmpty.png"
+  song.favorite === true ? favoriteButton.src = "./favoriteFilled.png" : favoriteButton.src = "./favoriteEmpty.png"
   // On click send to youtube
-  playButton.addEventListener("click", (e) => playMusic(e,song))
-  favoriteButton.addEventListener("click",(e) => postFavorite(e,song) )
+  playButton.addEventListener("click", (e) => playMusic(e, song))
+  favoriteButton.addEventListener("click", (e) => postFavorite(e, song))
 
 }
 
 //post favorite or Not to songsDb
-function postFavorite(e,song){
-    e.preventDefault()
-    fetch(`http://localhost:3000/songs/${song.id}`,{
-        method:"PATCH",
-        header:{
-          "content-Type":"application/json"
-        },
-          body:JSON.stringify({"favorite":!song.favorite})
-    })
+function postFavorite(e, song) {
+  e.preventDefault()
+  fetch(`http://localhost:3000/songs/${song.id}`, {
+    method: "PATCH",
+    header: {
+      "content-Type": "application/json"
+    },
+    body: JSON.stringify({ "favorite": !song.favorite })
+  })
     .then(response => {
-      if(response.ok) {
+      if (response.ok) {
       }
       else {
         alert("Something went wrong with favorite button")
       }
-      
+
     })
-  
+
 }
-  
+
 const renderLikedSongsPlaylist = () => {
-  
+
   const selectedDiv = document.querySelector("#playlist-container")
-  
+
   fetch("http://localhost:3000/songs")
-  .then(response => {
-    
-    // if response have a succcessful status code
-    if(response.ok) {
-      console.log(response, 'response')
-      return response.json() // gets returned to the next .then
-    } else {
-      alert("Something went wrong")
-    }
-    
-  })
-  .then(song => {
-    song.forEach(song => {
-      if(song.favorite === true) {
-        
-        console.log(song, "This is the song")
-  
-        
-        const selectedDiv = document.getElementById("playlist-container")
-      const button = document.createElement("button")
+    .then(response => {
 
-      const playButton = document.createElement('div')
-      const playButtonIcon = document.createElement("img")
-      const text = document.createElement("div")
-      const title = document.createElement("h4")
-      const songArtist = document.createElement("h4")
-      const favoriteButton = document.createElement("img")
-
-
-
-      button.id = "suggested-song";
-      button.className = "song-button";
-
-      playButton.id = "stock-album-cover";
-      playButtonIcon.src= "./blackYtLogo.png"
-      playButtonIcon.id = "yt-logo"
-      text.id = "song-text";
-      title.textContent = song.songTitle;
-      songArtist.textContent = song.artist;
-      favoriteButton.src = ""
-      favoriteButton.id = "favorite-button"
-
-      songArtist.value = song.artist;
-
-      selectedDiv.appendChild(button);
-      button.appendChild(playButton);
-      playButton.appendChild(playButtonIcon)
-      button.appendChild(text);
-      text.appendChild(title);
-      text.appendChild(songArtist);
-      button.appendChild(favoriteButton)
-
-      console.log(song,"<----this is the renderSong Obj")
-      // Shows correct like image depending on state
-      song.favorite === true ? favoriteButton.src ="./favoriteFilled.png" : favoriteButton.src = "./favoriteEmpty.png"
-      // On click send to youtube
-      playButton.addEventListener("click", (e) => playMusicPlaylist(e,song))
-      favoriteButton.addEventListener("click",(e) => postFavorite(e,song) )
-
+      // if response have a succcessful status code
+      if (response.ok) {
+        console.log(response, 'response')
+        return response.json() // gets returned to the next .then
+      } else {
+        alert("Something went wrong")
       }
 
     })
-  })
+    .then(song => {
+      song.forEach(song => {
+        if (song.favorite === true) {
+
+          console.log(song, "This is the song")
+
+
+          const selectedDiv = document.getElementById("playlist-container")
+          const button = document.createElement("button")
+
+          const playButton = document.createElement('div')
+          const playButtonIcon = document.createElement("img")
+          const text = document.createElement("div")
+          const title = document.createElement("h4")
+          const songArtist = document.createElement("h4")
+          const favoriteButton = document.createElement("img")
+
+
+
+          button.id = "suggested-song";
+          button.className = "song-button";
+
+          playButton.id = "stock-album-cover";
+          playButtonIcon.src = "./blackYtLogo.png"
+          playButtonIcon.id = "yt-logo"
+          text.id = "song-text";
+          title.textContent = song.songTitle;
+          songArtist.textContent = song.artist;
+          favoriteButton.src = ""
+          favoriteButton.id = "favorite-button"
+
+          songArtist.value = song.artist;
+
+          selectedDiv.appendChild(button);
+          button.appendChild(playButton);
+          playButton.appendChild(playButtonIcon)
+          button.appendChild(text);
+          text.appendChild(title);
+          text.appendChild(songArtist);
+          button.appendChild(favoriteButton)
+
+          console.log(song, "<----this is the renderSong Obj")
+          // Shows correct like image depending on state
+          song.favorite === true ? favoriteButton.src = "./favoriteFilled.png" : favoriteButton.src = "./favoriteEmpty.png"
+          // On click send to youtube
+          playButton.addEventListener("click", (e) => playMusicPlaylist(e, song))
+          favoriteButton.addEventListener("click", (e) => postFavorite(e, song))
+
+        }
+
+      })
+    })
 }
 
 // Shows The center Suggested Song
-function centerDisplay(songObj){
- renderSong(songObj,"top-body-container")
- 
+function centerDisplay(songObj) {
+  renderSong(songObj, "top-body-container")
+
 }
 
-function main(){
-  
+function main() {
+
   addSubmitListener()
   addChangeLocationSubmitListener()
   renderLikedSongsPlaylist()
-  
+
 }
 main();
