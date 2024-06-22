@@ -4,7 +4,7 @@
 
 ## Description
 
-Our website will give you a suggested song given the weather and your location.
+WeatherTune is a web application that recommends songs based on the weather and your location.
 
 ## Prerequisites
 
