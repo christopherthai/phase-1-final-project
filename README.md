@@ -16,7 +16,7 @@ Before you begin, ensure you have met the following requirements:
 
 ## Wireframe
 
-![Wireframe](Wireframe.png)
+![Wireframe](//planning/Wireframe.png)
 
 ## User Stories
 
@@ -24,7 +24,7 @@ As an user, I want a song that will match my mood for the day. I’ll hit the we
 
 ## Example of db.json
 
-![Trello Board](db-son.png)
+![Trello Board](//planning/db-son.png)
 
 ## API
 
@@ -50,4 +50,4 @@ We will use the forEach method to iterate through the data that we fetch from th
 
 ## Trello Board
 
-![Trello Board](Trello.png)
+![Trello Board](//planning/Trello.png)
