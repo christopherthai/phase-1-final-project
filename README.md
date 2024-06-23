@@ -14,6 +14,30 @@ Before you begin, ensure you have met the following requirements:
 - You have a [GitHub](https://github.com/) account.
 - You have installed [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/get-npm).
 
+## Getting Started
+
+To get a local copy up and running, follow these steps.
+
+### Front-end Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone git@github.com:your-username/phase-1-final-project.git
+   ```
+
+2. Navigate to the front-end directory:
+
+   ```bash
+   cd phase-1-final-project
+   ```
+
+3. Install npm packages:
+
+   ```bash
+   npm install
+   ```
+
 ## Wireframe
 
 ![Wireframe](//planning/Wireframe.png)
