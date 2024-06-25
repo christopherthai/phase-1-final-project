@@ -13,6 +13,7 @@ Before you begin, ensure you have met the following requirements:
 - You have installed [Git](https://git-scm.com/).
 - You have a [GitHub](https://github.com/) account.
 - You have installed [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/get-npm).
+- You have installed the Live Server VSCode extension: [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
 
 ## Getting Started
 
@@ -37,6 +38,21 @@ To get a local copy up and running, follow these steps.
    ```bash
    npm install
    ```
+
+## Running the Application
+
+1. Ensure you are in the root directory of the project.
+
+2. Start the JSON server to watch `songDb.json`:
+
+   ```bash
+   json-server --watch songDb.json
+   ```
+
+3. Open the project in VSCode.
+4. Right-click on the `index.html` file (or the main HTML file of your project) in the file explorer.
+5. Select `Open with Live Server` from the context menu.
+6. The application should now be running, and a new browser tab will open displaying the application. The Live Server will automatically reload the page whenever you make changes to the files.
 
 ## Wireframe
 
