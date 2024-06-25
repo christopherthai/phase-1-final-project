@@ -40,7 +40,7 @@ To get a local copy up and running, follow these steps.
 
 ## Wireframe
 
-![Wireframe](//planning/Wireframe.png)
+![Wireframe](/planning/Wireframe.png)
 
 ## User Stories
 
@@ -48,7 +48,7 @@ As an user, I want a song that will match my mood for the day. I’ll hit the we
 
 ## Example of db.json
 
-![Trello Board](//planning/db-son.png)
+![Trello Board](/planning/db-son.png)
 
 ## API
 
