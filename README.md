@@ -74,4 +74,4 @@ We will use the forEach method to iterate through the data that we fetch from th
 
 ## Trello Board
 
-![Trello Board](//planning/Trello.png)
+![Trello Board](/planning/Trello.png)
