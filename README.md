@@ -49,9 +49,9 @@ To get a local copy up and running, follow these steps.
    json-server --watch songDb.json
    ```
 
-3. Right-click on the `index.html` file (or the main HTML file of your project) in the file explorer.
+3. Right-click on the `index.html` file in the file explorer.
 4. Select `Open with Live Server` from the context menu.
-5. The application should now be running, and a new browser tab will open displaying the application. The Live Server will automatically reload the page whenever you make changes to the files.
+5. The application should now be running, and a new browser tab will open displaying the application.
 
 ## Wireframe
 

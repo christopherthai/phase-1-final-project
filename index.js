@@ -381,7 +381,7 @@ function renderSong(song, targetDiv) {
   button.className = "song-button";
 
   playButton.id = "stock-album-cover";
-  playButtonIcon.src = "./blackYtLogo.png"
+  playButtonIcon.src = "./planning/blackYtLogo.png"
   playButtonIcon.id = "yt-logo"
   text.id = "song-text";
   title.textContent = song.songTitle;
@@ -401,7 +401,7 @@ function renderSong(song, targetDiv) {
 
   console.log(song, "<----this is the renderSong Obj")
   // Shows correct like image depending on state
-  song.favorite === true ? favoriteButton.src = "./favoriteFilled.png" : favoriteButton.src = "./favoriteEmpty.png"
+  song.favorite === true ? favoriteButton.src = "./planning/favoriteFilled.png" : favoriteButton.src = "./planning/favoriteEmpty.png"
   // On click send to youtube
   playButton.addEventListener("click", (e) => playMusic(e, song))
   favoriteButton.addEventListener("click", (e) => postFavorite(e, song))
@@ -468,7 +468,7 @@ const renderLikedSongsPlaylist = () => {
           button.className = "song-button";
 
           playButton.id = "stock-album-cover";
-          playButtonIcon.src = "./blackYtLogo.png"
+          playButtonIcon.src = "./planning/blackYtLogo.png"
           playButtonIcon.id = "yt-logo"
           text.id = "song-text";
           title.textContent = song.songTitle;
@@ -488,7 +488,7 @@ const renderLikedSongsPlaylist = () => {
 
           console.log(song, "<----this is the renderSong Obj")
           // Shows correct like image depending on state
-          song.favorite === true ? favoriteButton.src = "./favoriteFilled.png" : favoriteButton.src = "./favoriteEmpty.png"
+          song.favorite === true ? favoriteButton.src = "./planning/favoriteFilled.png" : favoriteButton.src = "./planning/favoriteEmpty.png"
           // On click send to youtube
           playButton.addEventListener("click", (e) => playMusicPlaylist(e, song))
           favoriteButton.addEventListener("click", (e) => postFavorite(e, song))
